@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# filter_parasite_taxonomy.py ver 0.1
 # Parses the NCBI taxonomy as a tree, then filters out all parasite groups
 # Original credits to romainstuder @ https://github.com/romainstuder/evosite3d for the tree parsing
 
