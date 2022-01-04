@@ -12,8 +12,7 @@ LOGGER.setLevel(0)
 
 def main():
     name_dict, name_dict_reverse = load_ncbi_names(filename="names.dmp")
-    ncbi_taxonomy = load_ncbi_taxonomy(filename="nodes.dmp", name_dict=name_dict)
-    nodes_dmp_dict = load_nodes_dict(filename="nodes.dmp")
+    ncbi_taxonomy, nodes_dmp_dict = load_ncbi_taxonomy(filename="nodes.dmp", name_dict=name_dict)
 
     parasite_taxids = ["554915", "543769", "2611352", "2611341", "2795258", "2686027", "33634", "33630", "33154", "5878", "5794",
                         "6157", "6231", "10232", "85819", "7524", "7147", "7509", "7041", "7399"]
@@ -156,7 +155,7 @@ def load_ncbi_names(filename: str = "names.dmp") -> Tuple[Dict, Dict]:
     return name_dict, name_dict_reverse
 
 
-def load_ncbi_taxonomy(name_dict, filename: str = "nodes.dmp"):
+def load_ncbi_taxonomy(name_dict, filename: str = "nodes.dmp") -> Tuple[Dict, Dict]:
     """Load taxonomy NCBI file ("nodes.dmp")
 
     Args:
@@ -164,12 +163,14 @@ def load_ncbi_taxonomy(name_dict, filename: str = "nodes.dmp"):
         name_dict (dict): name_dict
 
     Returns:
+        name_object, nodes_dmp_dict
 
     """
 
     # Define taxonomy variable
     # global name_object
-    name_object: Dict = {}
+    name_object: Dict = {} # key = tax_id, value = node object
+    nodes_dmp_dict : Dict = {} # key = tax_id, value = corresponding line in nodes.dmp
 
     LOGGER.warning(f"Load {filename}")
     taxonomy_file = open(filename, "r")
@@ -177,12 +178,15 @@ def load_ncbi_taxonomy(name_dict, filename: str = "nodes.dmp"):
         line = taxonomy_file.readline()
         if line == "":
             break
-        line = line.replace("\t", "")
-        tab = line.split("|")
+        line2 = line.replace("\t", "")
+        tab = line2.split("|")
 
         tax_id = str(tab[0])
         tax_id_parent = str(tab[1])
         division = str(tab[2])
+        
+        # Populate nodes_dmp_dict
+        nodes_dmp_dict[tax_id] = line
 
         # Define name of the taxonomy id
         name = "unknown"
@@ -215,23 +219,7 @@ def load_ncbi_taxonomy(name_dict, filename: str = "nodes.dmp"):
 
     taxonomy_file.close()
 
-    return name_object
-
-def load_nodes_dict(filename: str = "nodes.dmp"):
-    nodes_dict: Dict = {}
-
-    LOGGER.warning(f"Load {filename}")
-    nodes_file = open(filename, "r")
-    while 1:
-        line = nodes_file.readline()
-        if line == "":
-            break
-        line2 = line.replace("\t", "")
-        tab = line2.split("|")
-        tax_id = str(tab[0])
-        nodes_dict[tax_id] = line
-
-    return nodes_dict
+    return name_object, nodes_dmp_dict
 
 if __name__ == "__main__":
     main()
