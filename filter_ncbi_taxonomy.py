@@ -1,25 +1,51 @@
 #!/usr/bin/env python3
-# filter_parasite_taxonomy.py ver 0.1
+# filter_ncbi_taxonomy.py ver 0.2 - to be executed in same directory as taxdump.tar and input .txt file
 # Parses the NCBI taxonomy as a tree, then filters out all parasite groups
 # Original credits to romainstuder @ https://github.com/romainstuder/evosite3d for the tree parsing
 
+import os
+import argparse
+import tarfile
 import logging
-import random
 from typing import Dict, List, Tuple
 
 LOGGER = logging.getLogger()
 LOGGER.setLevel(0)
 
 def main():
+    cwd = os.getcwd()
+
+    parser = argparse.ArgumentParser(description = "Filter NCBI taxonomy")
+    parser.add_argument('i', help = "specify input file in .txt format - taxon names must be newline-separated")
+    parser.add_argument('-o', '--output_directory', help = "specify output directory of filtered nodes.dmp", default = cwd)
+    args = parser.parse_args()
+
+    # open input .txt file -> [taxon names]
+    with open(args.i, 'r') as r:
+        hi_taxnames = r.readlines()
+    hi_taxnames2 = []
+    for taxname in hi_taxnames:
+        hi_taxnames2.append(taxname.strip("\n"))
+
+    # extract taxdump.tar.gz
+    try:
+        file = tarfile.open('taxdump.tar.gz')
+        print('Extracting taxdump files into your current directory')
+        file.extractall(cwd)
+        print('Successfully extracted taxdump files')
+    except FileNotFoundError:
+        print('Error: taxdump.tar.gz is not found in your current directory. Please ensure you have downloaded it before running this script again.')
+        exit()
+
+    # parse NCBI taxonomy
     name_dict, name_dict_reverse = load_ncbi_names(filename="names.dmp")
     ncbi_taxonomy, nodes_dmp_dict = load_ncbi_taxonomy(filename="nodes.dmp", name_dict=name_dict)
-
-    parasite_taxids = ["554915", "543769", "2611352", "2611341", "2795258", "2686027", "33634", "33630", "33154", "5878", "5794",
-                        "6157", "6231", "10232", "85819", "7524", "7147", "7509", "7041", "7399"]
     
-    print("Getting all descendant nodes of parasite groups")
+    # fetch descendant nodes of input taxons
+    print("Fetching all descendant nodes")
     all_descendants = []
-    for taxid in parasite_taxids:
+    for taxname in hi_taxnames2:
+        taxid = name_dict_reverse[taxname]
         all_descendants += _get_all_descendant_nodes(ncbi_taxonomy, taxid)
     print("Total number of descendant nodes = " + str(len(all_descendants)))
 
@@ -27,7 +53,7 @@ def main():
     sorted_all_descendants = sorted(int_all_descendants)
     sorted_all_descendants = list(map(str, sorted_all_descendants))
 
-    with open('nodes2.dmp', 'w') as w:
+    with open(os.path.join(args.output_directory, 'nodes2.dmp'), 'w') as w:
         for desc in sorted_all_descendants:
             w.write(nodes_dmp_dict[desc])
 
