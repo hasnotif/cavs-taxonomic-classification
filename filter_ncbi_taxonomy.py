@@ -176,7 +176,7 @@ def load_ncbi_names(filename: str = "names.dmp") -> Tuple[Dict, Dict]:
         if tab[3] == "scientific name":
             tax_id, name = tab[0], tab[1]  # Assign tax_id and name ...
             name_dict[tax_id] = name  # ... and load them
-            name_dict_reverse[name] = str(tax_id)  # ... into dictionaries
+            name_dict_reverse[name] = str(tax_id)  # ... into dictionaries !!!!!!!! duplicates may occur here
     name_file.close()
     return name_dict, name_dict_reverse
 
