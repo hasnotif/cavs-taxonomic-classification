@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# filter_ncbi_taxonomy.py ver 0.2 - to be executed in same directory as taxdump.tar and input .txt file
+# filter_ncbi_taxonomy.py ver 0.3 - to be executed in same directory as taxdump.tar and input .txt file
 # Parses the NCBI taxonomy as a tree, then filters out all parasite groups
 # Original credits to romainstuder @ https://github.com/romainstuder/evosite3d for the tree parsing
 
@@ -32,26 +32,37 @@ def main():
         file = tarfile.open('taxdump.tar.gz')
         print('Extracting taxdump files into your current directory')
         file.extractall(cwd)
-        print('Successfully extracted taxdump files')
     except FileNotFoundError:
         print('Error: taxdump.tar.gz is not found in your current directory. Please ensure you have downloaded it before running this script again.')
         exit()
 
     # parse NCBI taxonomy
+    print("Parsing NCBI taxonomy")
     name_dict, name_dict_reverse = load_ncbi_names(filename="names.dmp")
     ncbi_taxonomy, nodes_dmp_dict = load_ncbi_taxonomy(filename="nodes.dmp", name_dict=name_dict)
     
     # fetch descendant nodes of input taxons
-    print("Fetching all descendant nodes")
+    print("Fetching all descendant nodes of your input taxons")
     all_descendants = []
     for taxname in hi_taxnames2:
-        taxid = name_dict_reverse[taxname]
-        all_descendants += _get_all_descendant_nodes(ncbi_taxonomy, taxid)
-    print("Total number of descendant nodes = " + str(len(all_descendants)))
-
+        if isinstance(name_dict_reverse[taxname], list): # input name in hi_taxnames2 found to be a duplicate in taxonomy
+            taxid_list = name_dict_reverse[taxname]
+            print("Multiple taxIDs found for " + taxname + ": " + ", ".join(taxid_list))
+            # print(", ".join(taxid_list))
+            print("Please check which taxID is correct and type your chosen taxID(s) - if more than 1 taxID, separate them with a space")
+            chosen_taxid = input("Enter your chosen taxID(s): ")
+            chosen_taxid_list = chosen_taxid.split(" ")
+            for taxid in chosen_taxid_list:
+                all_descendants += _get_all_descendant_nodes(ncbi_taxonomy, taxid)
+        else:
+            taxid = name_dict_reverse[taxname]
+            all_descendants += _get_all_descendant_nodes(ncbi_taxonomy, taxid)
+    
     int_all_descendants = list(map(int, all_descendants))
     sorted_all_descendants = sorted(int_all_descendants)
     sorted_all_descendants = list(map(str, sorted_all_descendants))
+    sorted_all_descendants = list(dict.fromkeys(sorted_all_descendants))
+    print("Total number of descendant nodes = " + str(len(all_descendants)))
 
     with open(os.path.join(args.output_directory, 'nodes2.dmp'), 'w') as w:
         for desc in sorted_all_descendants:
@@ -161,23 +172,37 @@ def load_ncbi_names(filename: str = "names.dmp") -> Tuple[Dict, Dict]:
 
     """
 
-    name_dict = {}  # Initialise dictionary with TAX_ID:NAME
-    name_dict_reverse = {}  # Initialise dictionary with NAME:TAX_ID
+    name_dict = {}  # key = taxid, value = name
+    name_dict_reverse = {}  # key = name, value = taxid
 
     LOGGER.warning(f"Load {filename}")
-    name_file = open(filename, "r")
-    while 1:
-        line = name_file.readline()
-        if line == "":
-            break
-        line = line.rstrip()
-        line = line.replace("\t", "")
-        tab = line.split("|")
-        if tab[3] == "scientific name":
-            tax_id, name = tab[0], tab[1]  # Assign tax_id and name ...
-            name_dict[tax_id] = name  # ... and load them
-            name_dict_reverse[name] = str(tax_id)  # ... into dictionaries !!!!!!!! duplicates may occur here
-    name_file.close()
+    with open(filename, 'r') as name_file:
+        while 1:
+            line = name_file.readline()
+            if line == "":
+                break
+            line = line.rstrip()
+            line = line.replace("\t", "")
+            tab = line.split("|")
+            if tab[3] == "scientific name":
+                tax_id, name = tab[0], tab[1]
+
+                # load name_dict 
+                name_dict[tax_id] = name
+
+                # load name_dict_reverse 
+                if name in name_dict_reverse: # duplicate name found
+                    if isinstance(name_dict_reverse[name], list): # name already has a list of taxids
+                        curr_taxid_list = name_dict_reverse[name]
+                        upd_taxid_list = curr_taxid_list.append(str(tax_id))
+                        name_dict_reverse[name] = upd_taxid_list
+                    else: # name currently assigned to one taxid 
+                        new_taxid_list = [name_dict_reverse[name]]
+                        new_taxid_list.append(str(tax_id))
+                        name_dict_reverse[name] = new_taxid_list
+                else: 
+                    name_dict_reverse[name] = str(tax_id)  
+
     return name_dict, name_dict_reverse
 
 
