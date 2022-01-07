@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-# filter_ncbi_taxonomy.py v0.3.1 - to be executed in same directory as taxdump.tar and input .txt file
-# Parses the NCBI taxonomy as a tree, then filters out all parasite groups
+# filter_ncbi_taxonomy.py v0.4 - to be executed in same directory as taxdump.tar and input .txt file
+# Parses the NCBI taxonomy as a tree, then filters out all descendant nodes of user-defined taxonomic groups
 # Original credits to romainstuder @ https://github.com/romainstuder/evosite3d for the tree parsing
 
 import os
@@ -34,7 +34,7 @@ def main():
 
     # parse NCBI taxonomy
     print("Parsing NCBI taxonomy")
-    name_dict, name_dict_reverse = load_ncbi_names(filename="names.dmp")
+    name_dict, name_dict_reverse, names_dmp_dict = load_ncbi_names(filename="names.dmp")
     ncbi_taxonomy, nodes_dmp_dict = load_ncbi_taxonomy(filename="nodes.dmp", name_dict=name_dict)
     
     # fetch descendant nodes of input taxons
@@ -59,9 +59,11 @@ def main():
     sorted_all_descendants = list(dict.fromkeys(sorted_all_descendants))
     print("Total number of descendant nodes = " + str(len(sorted_all_descendants)))
 
-    with open(os.path.join(args.output_directory, 'nodes2.dmp'), 'w') as w:
+    # write to nodes2.dmp and names2.dmp
+    with open(os.path.join(args.output_directory, 'nodes2.dmp'), 'w') as w1, open(os.path.join(args.output_directory, 'names2.dmp'), 'w') as w2:
         for desc in sorted_all_descendants:
-            w.write(nodes_dmp_dict[desc])
+            w1.write(nodes_dmp_dict[desc])
+            w2.write(names_dmp_dict[desc])
 
     print("Successfully obtained descendants")
 
@@ -83,7 +85,7 @@ def _get_all_descendant_nodes(name_object, taxid: str) -> List[str]:
             descendant_nodes = descendant_nodes + _get_all_descendant_nodes(name_object, child)
     return descendant_nodes
 
-def load_ncbi_names(filename: str = "names.dmp") -> Tuple[Dict, Dict]:
+def load_ncbi_names(filename: str = "names.dmp") -> Tuple[Dict, Dict, Dict]:
     """Load NCBI names definition ("names.dmp")
 
     Args:
@@ -95,20 +97,24 @@ def load_ncbi_names(filename: str = "names.dmp") -> Tuple[Dict, Dict]:
     """
     name_dict = {}  # key = taxid, value = name
     name_dict_reverse = {}  # key = name, value = taxid
+    names_dmp_dict = {}  # key = taxid, value = corresponding line in names.dmp
 
     with open(filename, 'r') as name_file:
         while 1:
             line = name_file.readline()
             if line == "":
                 break
-            line = line.rstrip()
-            line = line.replace("\t", "")
-            tab = line.split("|")
+            line2 = line.rstrip()
+            line2 = line2.replace("\t", "")
+            tab = line2.split("|")
             if tab[3] == "scientific name":
                 tax_id, name = tab[0], tab[1]
 
                 # load name_dict 
                 name_dict[tax_id] = name
+
+                # load names_dmp_dict
+                names_dmp_dict[tax_id] = line
 
                 # load name_dict_reverse 
                 if name in name_dict_reverse: # duplicate name found
@@ -123,7 +129,7 @@ def load_ncbi_names(filename: str = "names.dmp") -> Tuple[Dict, Dict]:
                 else:
                     name_dict_reverse[name] = str(tax_id)  
 
-    return name_dict, name_dict_reverse
+    return name_dict, name_dict_reverse, names_dmp_dict
 
 def load_ncbi_taxonomy(name_dict, filename: str = "nodes.dmp") -> Tuple[Dict, Dict]:
     """Load taxonomy NCBI file ("nodes.dmp")
