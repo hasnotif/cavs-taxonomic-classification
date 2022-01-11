@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# filter_ncbi_taxonomy.py v0.4 - to be executed in same directory as taxdump.tar and input .txt file
+# filter_ncbi_taxonomy.py v0.4.1 - to be executed in same directory as taxdump.tar and input .txt file
 # Parses the NCBI taxonomy as a tree, then filters out all descendant nodes of user-defined taxonomic groups
 # Original credits to romainstuder @ https://github.com/romainstuder/evosite3d for the tree parsing
 
@@ -59,11 +59,12 @@ def main():
     sorted_all_descendants = list(dict.fromkeys(sorted_all_descendants))
     print("Total number of descendant nodes = " + str(len(sorted_all_descendants)))
 
-    # write to nodes2.dmp and names2.dmp
-    with open(os.path.join(args.output_directory, 'nodes2.dmp'), 'w') as w1, open(os.path.join(args.output_directory, 'names2.dmp'), 'w') as w2:
+    # write to nodes2.dmp, names2.dmp and desc_taxids.txt
+    with open(os.path.join(args.output_directory, 'nodes2.dmp'), 'w') as w1, open(os.path.join(args.output_directory, 'names2.dmp'), 'w') as w2, open(os.path.join(args.output_directory, 'desc_taxids.txt'), 'w') as w3:
         for desc in sorted_all_descendants:
             w1.write(nodes_dmp_dict[desc])
             w2.write(names_dmp_dict[desc])
+            w3.write(desc + "\n")
 
     print("Successfully obtained descendants")
 
