@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
-# generate_download_filtered_seq_pipeline.py v0.1 
+# generate_download_refseq_pipeline.py v0.1 
 # Generates a makefile which downloads specific RefSeq sequences based on user-defined set of taxonomic groups
 
 import os
 import argparse
 
 def main():
-    cwd = os.getcwd()
+    cwd = os.getcwd() # must be in $DB_NAME/
 
     parser = argparse.ArgumentParser(description = "Download specific RefSeq sequences based on a user-defined set of taxonomic groups")
     parser.add_argument('i', help = "specify input file in .txt format - taxon names must be newline-separated")
-    parser.add_argument('-m', '--makefile_name', help = "specify filename of makefile with .mk extension", default = "download_filtered_seq.mk")
-    parser.add_argument('-d', '--output_directory', help = "specify directory of output .fasta file", default = cwd)
+    parser.add_argument('-m', '--makefile_name', help = "specify filename of makefile with .mk extension", default = "batch_download_refseq.mk")
+
+    default_seq_path = os.path.join(cwd, "sequences")
+    if not os.path.exists(default_seq_path):
+        os.mkdir(default_seq_path)
+        print(f"Created {default_seq_path} directory - sequence files will be downloaded and saved here")
+    # parser.add_argument('-o', '--output_directory', help = "specify directory of output .fasta files", default = default_seq_path)
     args = parser.parse_args()
 
     print("Processing your taxonomic groups")
@@ -21,72 +26,83 @@ def main():
     for taxname in query_taxnames:
         query_taxnames2.append(taxname.strip("\n"))
 
-    names_dmp_dict, names_dmp_dict_reversed = load_name_dict(filename="names.dmp") # this names.dmp must be the filtered version
-    
-    query_taxids = []
-    for taxname in query_taxnames2:
-        if isinstance(names_dmp_dict_reversed[taxname], list):
-            taxid_list = names_dmp_dict_reversed[taxname]
-            print("Multiple taxIDs found for " + taxname + ": " + ", ".join(taxid_list))
-            print("Please check which taxID is correct and type your chosen taxID(s) - if more than 1 taxID, separate them with a space")
+    print("Parsing names.dmp")
+    # changing to $DB_NAME/taxonomy directory
+    orig_path = cwd
+    os.chdir(os.path.join(cwd, "taxonomy"))
+    name_dict = load_ncbi_names("names.dmp") # key = name, value = taxid or [taxids]
+    query_list = [] # contains (taxid, name) tuples
+
+    for name in query_taxnames2:
+        if isinstance(name_dict[name], list):
+            taxid_list = name_dict[name]
+            print(f"Multiple taxIDs found for {name}: {taxid_list}")
+            print(f"Please check which taxID is correct and type your chosen taxID(s) - if more than 1 taxID, separate them with a space")
             chosen_taxid = input("Enter your chosen taxID(s): ")
             chosen_taxid_list = chosen_taxid.split(" ")
-            query_taxids += chosen_taxid_list
+            for taxid in chosen_taxid_list:
+                pair = (taxid, name)
+                query_list.append(pair)
         else:
-            taxid = names_dmp_dict_reversed[taxname]
-            query_taxids.append(str(taxid))
+            pair = (name_dict[name], name)
+            query_list.append(pair)
 
+    # pass query names and taxids as separate inputs to batch_download_refseq.py via makefile 
     print("Generating targets and dependencies for makefile")
     tgts = []
     deps = []
     cmds = []
 
-    for taxid in query_taxids:
-        tgt = f'{args.output_directory}/{names_dmp_dict[taxid]}.fa.OK'
+    for query in query_list:
+        tgt = f'{default_seq_path}/{query[1]}_{query[0]}.fa.OK'
         tgts.append(tgt)
 
         dep = ''
         deps.append(dep)
 
-        cmd = f'esearch -db taxonomy -query "txid{taxid} [Organism]"|elink -target nuccore|efilter -query "refseq"|efetch -format fasta > {names_dmp_dict[taxid]}.fa'
+        cmd = f'~/cavs-taxonomic-classification/batch_download_refseq.py {query[0]} {query[1]} -o {default_seq_path}'
         cmds.append(cmd)
 
     print("Writing makefile")
+    # change back to $DB_NAME/
+    os.chdir(orig_path)
     write_makefile(tgts, deps, cmds, args.makefile_name)
-        
-def load_name_dict(filename: str = "names.dmp"):
-    names_dmp_dict = {} # key = taxid, value = name
-    names_dmp_dict_reversed = {} # key = name, value = taxid
+
+    print("Makefile successfully generated")
+
+def load_ncbi_names(filename):
+    name_dict = {}  # key = name, value = taxid or [taxids]
 
     with open(filename, 'r') as r:
         while 1:
             line = r.readline()
             if line == "":
                 break
-            line2 = line.replace("\t", "")
+            line2 = line.rstrip()
+            line2 = line2.replace("\t", "")
             tab = line2.split("|")
+            if tab[3] == "scientific name":
+                tax_id, name = tab[0], tab[1]
 
-            tax_id = str(tab[0])
-            name = str(tab[1])
-
-            names_dmp_dict[tax_id] = name
-
-            if name in names_dmp_dict_reversed:
-                if isinstance(names_dmp_dict_reversed[name], list):
-                    taxid_list = names_dmp_dict_reversed[name]
-                    taxid_list.append(str(tax_id))
-                    names_dmp_dict_reversed[name] = taxid_list
+                # load name_dict
+                if name in name_dict: # duplicate name found
+                    if isinstance(name_dict[name], list): # name already has a list of taxids
+                        taxid_list = name_dict[name]
+                        taxid_list.append(str(tax_id))
+                        name_dict[name] = taxid_list
+                    else: # name currently assigned to one taxid 
+                        new_taxid_list = [name_dict[name]]
+                        new_taxid_list.append(str(tax_id))
+                        name_dict[name] = new_taxid_list
                 else:
-                    new_taxid_list = [names_dmp_dict_reversed[name]]
-                    new_taxid_list.append(str(tax_id))
-                    names_dmp_dict_reversed[name] = new_taxid_list
-            else:
-                names_dmp_dict_reversed[name] = str(tax_id)
+                    name_dict[name] = str(tax_id)  
 
-    return (names_dmp_dict, names_dmp_dict_reversed)
+    return name_dict
 
 def write_makefile(tgts, deps, cmds, filename):
     with open(filename, 'w') as f:
+        f.write(f".DELETE_ON_ERROR:")
+        f.write("\n\n")
         f.write("all : ") 
         for tgt in tgts:
             f.write(f'{tgt} ')
