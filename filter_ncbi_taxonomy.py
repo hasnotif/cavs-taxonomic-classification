@@ -1,19 +1,18 @@
 #!/usr/bin/env python3
-# filter_ncbi_taxonomy.py v0.4.1 - to be executed in same directory as taxdump.tar and input .txt file
+# filter_ncbi_taxonomy.py v0.4.2 - to be executed in same directory as taxdump.tar and input .txt file
 # Parses the NCBI taxonomy as a tree, then filters out all descendant nodes of user-defined taxonomic groups
 # Original credits to romainstuder @ https://github.com/romainstuder/evosite3d for the tree parsing
 
 import os
 import argparse
-import tarfile
 from typing import Dict, List, Tuple
 
 def main():
-    cwd = os.getcwd()
+    cwd = os.getcwd() # must be in $DB_NAME/
 
     parser = argparse.ArgumentParser(description = "Filter NCBI taxonomy")
     parser.add_argument('i', help = "specify input file in .txt format - taxon names must be newline-separated")
-    parser.add_argument('-o', '--output_directory', help = "specify output directory of filtered nodes.dmp", default = cwd)
+    parser.add_argument('-o', '--output_directory', help = "specify output directory of filtered nodes.dmp", default = os.path.join(cwd, "taxonomy"))
     args = parser.parse_args()
 
     # open input .txt file -> [taxon names]
@@ -23,17 +22,9 @@ def main():
     for taxname in hi_taxnames:
         hi_taxnames2.append(taxname.strip("\n"))
 
-    # extract taxdump.tar.gz
-    try:
-        file = tarfile.open('taxdump.tar.gz')
-        print('Extracting taxdump files into your current directory')
-        file.extractall(cwd)
-    except FileNotFoundError:
-        print('Error: taxdump.tar.gz is not found in your current directory. Please ensure you have downloaded it before running this script again.')
-        exit()
-
     # parse NCBI taxonomy
     print("Parsing NCBI taxonomy")
+    os.chdir(os.path.join(cwd, "taxonomy"))
     name_dict, name_dict_reverse, names_dmp_dict = load_ncbi_names(filename="names.dmp")
     ncbi_taxonomy, nodes_dmp_dict = load_ncbi_taxonomy(filename="nodes.dmp", name_dict=name_dict)
     
@@ -66,6 +57,10 @@ def main():
             w2.write(names_dmp_dict[desc])
             w3.write(desc + "\n")
 
+    os.remove("nodes.dmp")
+    os.remove("names.dmp")
+    os.rename("nodes2.dmp", "nodes.dmp")
+    os.rename("names2.dmp", "names.dmp")
     print("Successfully obtained descendants")
 
 class Node:
