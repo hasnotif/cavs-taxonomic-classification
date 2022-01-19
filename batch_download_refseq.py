@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# batch_download_refseq.py v0.2 - modified to facilitate parallel batch downloads via makefile
+# batch_download_refseq.py v0.3 - modified to facilitate parallel batch downloads via makefile
 # Downloads RefSeq sequences under a user-defined taxonomic group in batches of 500
 
 import os
