@@ -18,16 +18,17 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+# Modified to suit Kraken2's database structure
+
 import os
 import argparse
 import subprocess
 import textwrap
-import gzip
 import re
 import sys
 
 def main():
-    cwd = os.getcwd()
+    cwd = os.getcwd() # must be in $DB_NAME/
                
     parser = argparse.ArgumentParser(
          description='Download refseq database',
@@ -40,8 +41,8 @@ def main():
                      viral|vertebrate_mammalian|vertebrate_other 
            '''))
     parser.add_argument('-m', '--make_file', help='make file name', type=str, default='download_refseq_db.mk')
-    parser.add_argument('-d', '--database', help='refseq database to download', type=str, default='viral')
-    parser.add_argument('-o', '--output_directory', help='output directory', type=str, default=cwd + '/' +'db')
+    parser.add_argument('-d', '--database', help='refseq database to download', type=str)
+    parser.add_argument('-o', '--output_directory', help='output directory', type=str, default=os.path.join(cwd, 'sequences'))
     args = parser.parse_args()
 
     for arg in vars(args):
@@ -123,7 +124,6 @@ class PipelineGenerator(object):
             f.write(f'{self.tgts[i]} : {self.deps[i]}\n')
             f.write(f'\t{self.cmds[i]}\n')
             f.write(f'\ttouch {self.tgts[i]}\n\n')
-        f.close()    
-              
+        f.close()        
 
 main()
