@@ -10,18 +10,17 @@ def main():
     cwd = os.getcwd() # must be in $DB_NAME/
     db_path = cwd
     tax_path = os.path.join(db_path, "taxonomy")
+    default_seq_path = os.path.join(cwd, "sequences")
 
     parser = argparse.ArgumentParser(description = "Download specific RefSeq sequences based on a user-defined set of taxonomic groups")
     parser.add_argument('i', help = "specify input file in .txt format - taxon names must be newline-separated")
     parser.add_argument('-m', '--makefile_name', help = "specify filename of makefile with .mk extension", default = "batch_download_refseq.mk")
     parser.add_argument("-k", "--api_key", help = "specify NCBI API key (optional)", default = None)
+    args = parser.parse_args()
 
-    default_seq_path = os.path.join(cwd, "sequences")
     if not os.path.exists(default_seq_path):
         os.mkdir(default_seq_path)
         print(f"Created {default_seq_path} directory - sequence files will be downloaded and saved here")
-
-    args = parser.parse_args()
 
     print("Processing your taxonomic groups")
     with open(args.i, 'r') as r:
@@ -50,30 +49,23 @@ def main():
             pair = (name_dict[name], name)
             query_list.append(pair)
 
-    # pass query names and taxids as separate inputs to batch_download_refseq.py via makefile 
-    print("Generating targets and dependencies for makefile")
-    tgts = []
-    deps = []
-    cmds = []
+    mg = MakefileGenerator(args.makefile_name)
 
+    # pass query names and taxids (+ API key if available) as separate inputs to batch_download_refseq.py via makefile 
+    print("Generating targets and dependencies for makefile")
     for query in query_list:
         tgt = f'{default_seq_path}/{query[1]}_{query[0]}.fa.OK'
-        tgts.append(tgt)
-
         dep = ''
-        deps.append(dep)
-
         cmd = f'~/cavs-taxonomic-classification/batch_download_refseq.py {query[0]} {query[1]} -o {default_seq_path}'
         if args.api_key != None:
             cmd += f" -k {args.api_key}"
-        cmds.append(cmd)
+        mg.add(tgt, dep, cmd)
 
     print("Writing makefile")
     # change back to $DB_NAME/
     os.chdir(db_path)
-    write_makefile(tgts, deps, cmds, args.makefile_name)
-
-    print("Makefile successfully generated")
+    mg.write()
+    print(f"Successfully generated makefile ({args.makefile_name})")
 
 def load_ncbi_names(filename):
     name_dict = {}  # key = name, value = taxid or [taxids]
@@ -104,19 +96,38 @@ def load_ncbi_names(filename):
 
     return name_dict
 
-def write_makefile(tgts, deps, cmds, filename):
-    with open(filename, 'w') as f:
-        f.write(f".DELETE_ON_ERROR:")
-        f.write("\n\n")
-        f.write("all : ") 
-        for tgt in tgts:
-            f.write(f'{tgt} ')
-        f.write("\n\n")
+class MakefileGenerator(object):
+    def __init__(self, makefile):
+        self.makefile = makefile
+        self.tgts = []
+        self.deps = []
+        self.cmds = []
 
-        for i in range(len(tgts)):
-            f.write(f'{tgts[i]} : {deps[i]}\n')
-            f.write(f'\t{cmds[i]}\n')
-            f.write(f'\ttouch {tgts[i]}\n\n')
+    def add(self, tgt, dep, cmd):
+        self.tgts.append(tgt)
+        self.deps.append(dep)
+        self.cmds.append(cmd)
 
+    def print(self):
+        print('.DELETE_ON_ERROR:')
+        for i in range(len(self.tgts)):
+            print(f'{self.tgts[i]} : {self.deps[i]}')
+            print(f'\t{self.cmds[i]}')
+            print(f'\ttouch {self.tgts[i]}')
+
+    def write(self):
+        with open(self.makefile, 'w') as f:
+            f.write(f".DELETE_ON_ERROR:")
+            f.write("\n\n")
+            f.write("all : ") 
+            for tgt in self.tgts:
+                f.write(f'{tgt} ')
+            f.write("\n\n")
+
+            for i in range(len(self.tgts)):
+                f.write(f'{self.tgts[i]} : {self.deps[i]}\n')
+                f.write(f'\t{self.cmds[i]}\n')
+                f.write(f'\ttouch {self.tgts[i]}\n\n')
+    
 if __name__ == "__main__":
     main()
