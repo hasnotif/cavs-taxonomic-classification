@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# generate_batch_download_pipeline.py v0.2 
+# generate_batch_download_pipeline.py v0.3 
 # Generates a makefile which batch downloads specific RefSeq sequences based on user-defined set of taxonomic groups
 # Retmax default = 500
 
@@ -8,16 +8,19 @@ import argparse
 
 def main():
     cwd = os.getcwd() # must be in $DB_NAME/
+    db_path = cwd
+    tax_path = os.path.join(db_path, "taxonomy")
 
     parser = argparse.ArgumentParser(description = "Download specific RefSeq sequences based on a user-defined set of taxonomic groups")
     parser.add_argument('i', help = "specify input file in .txt format - taxon names must be newline-separated")
     parser.add_argument('-m', '--makefile_name', help = "specify filename of makefile with .mk extension", default = "batch_download_refseq.mk")
+    parser.add_argument("-k", "--api_key", help = "specify NCBI API key (optional)", default = None)
 
     default_seq_path = os.path.join(cwd, "sequences")
     if not os.path.exists(default_seq_path):
         os.mkdir(default_seq_path)
         print(f"Created {default_seq_path} directory - sequence files will be downloaded and saved here")
-    # parser.add_argument('-o', '--output_directory', help = "specify directory of output .fasta files", default = default_seq_path)
+
     args = parser.parse_args()
 
     print("Processing your taxonomic groups")
@@ -29,8 +32,7 @@ def main():
 
     print("Parsing names.dmp")
     # changing to $DB_NAME/taxonomy directory
-    orig_path = cwd
-    os.chdir(os.path.join(cwd, "taxonomy"))
+    os.chdir(tax_path)
     name_dict = load_ncbi_names("names.dmp") # key = name, value = taxid or [taxids]
     query_list = [] # contains (taxid, name) tuples
 
@@ -62,11 +64,13 @@ def main():
         deps.append(dep)
 
         cmd = f'~/cavs-taxonomic-classification/batch_download_refseq.py {query[0]} {query[1]} -o {default_seq_path}'
+        if args.api_key != None:
+            cmd += f" -k {args.api_key}"
         cmds.append(cmd)
 
     print("Writing makefile")
     # change back to $DB_NAME/
-    os.chdir(orig_path)
+    os.chdir(db_path)
     write_makefile(tgts, deps, cmds, args.makefile_name)
 
     print("Makefile successfully generated")

@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
-# batch_download_refseq.py v0.3 - modified to facilitate parallel batch downloads via makefile
+# batch_download_refseq.py v0.4 - added optional API key argument
 # Downloads RefSeq sequences under a user-defined taxonomic group in batches of 500
 
 import os
 import argparse
 import re
 import requests
+import logging
 
 def main():
+    logging.basicConfig(filename = "logger.log", encoding = "utf-8", filemode = "w", level = logging.INFO)
+    logging.info("Start")
+
     parser = argparse.ArgumentParser(description="Downloads RefSeq sequences under a user-defined set of taxonomic groups in batches of 500")
     parser.add_argument("i", help = "specify taxid of taxonomic group")
     parser.add_argument("n", help = "specify name of taxonomic group")
     parser.add_argument("-o", "--output_directory", help = "specify output directory of downloaded sequence files") # default = $DB_NAME/sequences
+    parser.add_argument("-k", "--api_key", help = "specify NCBI API key (optional)", default = None)
     args = parser.parse_args()
 
     db = "nucleotide"
@@ -20,10 +25,15 @@ def main():
     query_taxid = args.i
     query_name = args.n
     query = f"txid{query_taxid}[Organism]+AND+RefSeq"
-    ext = f"esearch.fcgi?db={db}&term={query}&usehistory=y&api_key=9551d35e36c6a9cc3d58ab68607b265c2608"
+    ext = f"esearch.fcgi?db={db}&term={query}&usehistory=y"
+    if args.api_key != None:
+        ext += f"&api_key={args.api_key}"
     url = base + ext
 
-    output = requests.get(url)
+    try:
+        output = requests.get(url)
+    except Exception as e:
+        logging.warning(f"Failed to access {url} due to {e}")
         
     p1 = re.compile(r"<WebEnv>(\S+)</WebEnv>")
     p2 = re.compile(r"<QueryKey>(\d+)</QueryKey>")
@@ -42,10 +52,17 @@ def main():
             efetch_url = base + f"efetch.fcgi?db={db}&WebEnv={web_env}"
             efetch_url += f"&query_key={key}&retstart={i}"
             efetch_url += f"&retmax={retmax}&rettype=fasta&retmode=text"
-            efetch_url += f"&api_key=9551d35e36c6a9cc3d58ab68607b265c2608"
-            efetch_out = requests.get(efetch_url)
+            if args.api_key != None:
+                efetch_url += f"&api_key={args.api_key}"
+            try:
+                efetch_out = requests.get(efetch_url)
+            except requests.exceptions.ChunkedEncodingError as e:
+                logging.warning(f"Failed to download from {efetch_url} due to {e}")
+                continue
             w.write(efetch_out.text)
     print(f"Successfully downloaded {query_name} (taxid: {query_taxid}) RefSeq sequences")
+
+    logging.info("End")
 
 def get_substring(string, c1, c2):
     idx1 = string.index(c1)
