@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # batch_download_refseq.py v0.4 - added optional API key argument
-# Downloads RefSeq sequences under a user-defined taxonomic group in batches of 500
+# Batch downloads RefSeq sequences classified under a specific taxonomic group
+# Retmax = 500 by default
 
 import os
 import argparse
@@ -9,7 +10,7 @@ import requests
 import logging
 
 def main():
-    logging.basicConfig(filename = "logger.log", encoding = "utf-8", filemode = "w", level = logging.INFO)
+    logging.basicConfig(filename = "download_logger.log", encoding = "utf-8", filemode = "w", level = logging.INFO)
     logging.info("Start")
 
     parser = argparse.ArgumentParser(description="Downloads RefSeq sequences under a user-defined set of taxonomic groups in batches of 500")

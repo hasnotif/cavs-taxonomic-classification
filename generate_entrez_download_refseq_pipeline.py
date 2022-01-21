@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# generate_batch_download_pipeline.py v0.3 
+# generate_batch_download_pipeline.py v0.3.1
 # Generates a makefile which batch downloads specific RefSeq sequences based on user-defined set of taxonomic groups
-# Retmax default = 500
+# Retmax = 500 by default
 
 import os
 import argparse
