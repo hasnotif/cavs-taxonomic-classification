@@ -3,7 +3,7 @@
 import os
 import argparse
 import re
-from ete3 import NCBITaxa, TreeStyle, NodeStyle, faces, AttrFace, CircleFace, TextFace, Tree
+from ete3 import NCBITaxa, TreeStyle, NodeStyle,CircleFace, TextFace
 
 def main():
     os.environ['QT_QPA_PLATFORM'] = 'offscreen' # must include this line if running on headless server 
@@ -47,17 +47,23 @@ def main():
     ts.mode = "c"
     ts.arc_start = -180
     ts.arc_span = 359
+    ts.legend.add_face(TextFace("Phyla", fsize = 300, bold = True), column = 0)
+    ts.legend.add_face(CircleFace(0, "White", style = "circle"), column = 1)
+    ts.legend_position = 4
+    ts.title.add_face(TextFace("Sample radial tree", fsize = 500, bold = True), column = 1) # how to centre this?
 
+    # Colouring phyla and adding legend
     idx = 0
-    for node in tree.search_nodes(rank = "phylum"):
+    for node in tree.search_nodes(rank = "phylum"): 
         style = NodeStyle()
         style["bgcolor"] = colours[idx]
         node.set_style(style)
-        ts.legend.add_face(CircleFace(300, colours[idx]), column=0)
-        ts.legend.add_face(TextFace(f" {node.sci_name}", fsize = 200), column=1)
+
+        ts.legend.add_face(CircleFace(300, colours[idx]), column = 0)
+        ts.legend.add_face(TextFace(f" {node.sci_name}", fsize = 300), column = 1)
         idx += 1
 
-    tree.render("tree.png", w = 183, units = "mm", tree_style = ts, dpi = 300)
+    tree.render("tree.svg", w = 180, units = "mm", tree_style = ts)
  
 def layout(node):
     style2 = NodeStyle()
