@@ -3,11 +3,17 @@
 import os
 import argparse
 import re
-from ete3 import NCBITaxa, TreeStyle, NodeStyle,CircleFace, TextFace
+from ete3 import NCBITaxa, TreeStyle, NodeStyle, CircleFace, TextFace
 
 def main():
     os.environ['QT_QPA_PLATFORM'] = 'offscreen' # must include this line if running on headless server 
-    cwd = os.getcwd() # must be in $DB_NAME/
+    cwd = os.getcwd()
+    res_dir = os.path.join(cwd, "results")
+    if os.path.exists(res_dir):
+        os.chdir(res_dir)
+    else:
+        os.mkdir(res_dir)
+        os.chdir(res_dir)
 
     colours = ["IndianRed", "Pink", "LightSalmon", "Gold", "Thistle", "GreenYellow", "Aqua", "Bisque", "Gainsboro",
                 "HotPink", "OrangeRed", "Yellow", "Violet", "LimeGreen", "LightCyan", "BurlyWood", "Gray"]
@@ -50,7 +56,6 @@ def main():
     ts.legend.add_face(TextFace("Phyla", fsize = 300, bold = True), column = 0)
     ts.legend.add_face(CircleFace(0, "White", style = "circle"), column = 1)
     ts.legend_position = 4
-    ts.title.add_face(TextFace("Sample radial tree", fsize = 500, bold = True), column = 1) # how to centre this?
 
     # Colouring phyla and adding legend
     idx = 0
