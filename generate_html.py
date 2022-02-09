@@ -3,6 +3,7 @@
 import os
 import argparse
 import datetime
+import shutil
 
 def main():
     cwd = os.getcwd()
@@ -11,6 +12,13 @@ def main():
     res_dir = os.path.join(cwd, "results")
     if not os.path.exists(res_dir):
         os.mkdir(res_dir)
+
+    # copy CSS and javascript files to html directory
+    shutil.copy("cavs-taxonomic-classification/styles.css", "results")
+    shutil.copy("cavs-taxonomic-classification/theme.default.css", "results")
+    shutil.copy("cavs-taxonomic-classification/reportScript.js", "results")
+    shutil.copy("cavs-taxonomic-classification/jquery-3.6.0.js", "results")
+    shutil.copy("cavs-taxonomic-classification/jquery.tablesorter.js", "results")
 
     parser = argparse.ArgumentParser(description = "Creates a HTML report of Kraken2 classification results")
     parser.add_argument("-r", "--kraken2_report", help = "specify Kraken2 report output file")
@@ -49,13 +57,6 @@ def get_classification_rate(file):
     return res, total_count
 
 def get_taxa_results(file):
-    """ phylum_dict = {}
-    class_dict = {}
-    order_dict = {}
-    family_dict = {}
-    genus_dict = {}
-    species_dict = {} """
-
     results = []
 
     with open(file, "r") as r:
@@ -65,30 +66,10 @@ def get_taxa_results(file):
             tab = line.split("\t")
             if tab[2] == "0" or tab[4] == "0":
                 continue
-            percentage_cover = tab[0]
-            num_cover = tab[1]
-            num_ass_direct = tab[2]
-            rank = tab[3]
-            taxid = tab[4]
-            sci_name = tab[5]
+            percentage_cover, num_cover, num_ass_direct, rank, taxid, sci_name = tab[0], tab[1], tab[2], tab[3], tab[4], tab[5]
             result = (percentage_cover, num_cover, num_ass_direct, rank, taxid, sci_name)
-
             results.append(result)
-            """ if taxid != "0" or "1":
-                rank = tab[3]
-                if "P" in rank:
-                    phylum_dict[taxid] = line
-                if "C" in rank:
-                    class_dict[taxid] = line
-                if "O" in rank:
-                    order_dict[taxid] = line
-                if "F" in rank:
-                    family_dict[taxid] = line
-                if "G" in rank:
-                    genus_dict[taxid] = line
-                if "S" in rank:
-                    species_dict[taxid] = line """
-
+            
     return results
 
 class HTMLGenerator(object):
@@ -113,8 +94,8 @@ class HTMLGenerator(object):
 
             # head section
             w.write("\t<head>\n")
-            w.write(f"\t\t<link rel=\"stylesheet\" href=\"styles.css\">\n")
-            w.write("\t\t<h1>Kraken2 taxonomic classification results</h1>\n")
+            w.write("\t\t<link rel=\"stylesheet\" href=\"styles.css\">\n")
+            w.write("\t\t<h1 id=\"header\">Kraken2 taxonomic classification results</h1>\n")
             w.write("\t</head>\n")
 
             # body section
@@ -132,43 +113,46 @@ class HTMLGenerator(object):
             # draw table of taxa results
             w.write(f"\t\t<h2>Table of classified taxonomic groups</h2>\n")
             # header row
-            w.write("\t\t<table id=\"taxonomyTable\">\n")
-            w.write("\t\t\t<tr>\n")
-            w.write("\t\t\t\t<th>Taxon Name</th>\n")
-            w.write("\t\t\t\t<th>Taxonomic ID</th>\n")
+            w.write("\t\t<table id=\"taxonomyTable\" class=\"tablesorter\">\n")
+            w.write("\t\t\t<thead>\n")
+            w.write("\t\t\t\t<tr>\n")
+            w.write("\t\t\t\t\t<th>Taxon Name</th>\n")
+            w.write("\t\t\t\t\t<th>Taxonomic ID</th>\n")
 
             # Rank filter with dropdown menu
-            w.write("\t\t\t\t<th>\n")
-            w.write("\t\t\t\t\t<select name=\"rankList\" id=\"rankList\" onchange=\"changeRank()\" class=\"form-control\">\n")
-            w.write("\t\t\t\t\t\t<option selected disabled>Rank</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"Domain\">Domain</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"Kingdom\">Kingdom</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"Phylum\">Phylum</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"Class\">Class</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"Order\">Order</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"Family\">Family</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"Genus\">Genus</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"Species\">Species</option>\n")
-            w.write("\t\t\t\t\t\t<option value=\"All Ranks\">All Ranks</option>\n")
-            w.write("\t\t\t\t\t</select>\n")
-            w.write("\t\t\t\t</th>\n")
+            w.write("\t\t\t\t\t<th>\n")
+            w.write("\t\t\t\t\t\t<select name=\"rankList\" id=\"rankList\" class=\"form-control\">\n")
+            w.write("\t\t\t\t\t\t\t<option selected disabled>Rank</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"Domain\">Domain</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"Kingdom\">Kingdom</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"Phylum\">Phylum</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"Class\">Class</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"Order\">Order</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"Family\">Family</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"Genus\">Genus</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"Species\">Species</option>\n")
+            w.write("\t\t\t\t\t\t\t<option value=\"All Ranks\">All Ranks</option>\n")
+            w.write("\t\t\t\t\t\t</select>\n")
+            w.write("\t\t\t\t\t</th>\n")
 
-            w.write("\t\t\t\t<th>Percentage of fragments covered (%)</th>\n")
-            w.write("\t\t\t\t<th>Number of fragments covered</th>\n")
-            w.write("\t\t\t\t<th>Number of fragments directly assigned</th>\n")
-            w.write("\t\t\t</tr>\n")
+            w.write("\t\t\t\t\t<th id=\"3\" class=\"rankable\">Percentage of fragments covered (%)</th>\n")
+            w.write("\t\t\t\t\t<th id=\"4\" class=\"rankable\">Number of fragments covered</th>\n")
+            w.write("\t\t\t\t\t<th id=\"5\" class=\"rankable\">Number of fragments directly assigned</th>\n")
+            w.write("\t\t\t\t</tr>\n")
+            w.write("\t\t\t</thead>\n")
 
+            w.write("\t\t\t<tbody>\n")
             # result = (percentage_cover, num_cover, num_ass_direct, rank, taxid, sci_name)
             for result in self.taxa_results:
-                w.write("\t\t\t<tr>\n")
-                w.write(f"\t\t\t\t<td class=\"sci_name\">{result[5]}</td>\n")
-                w.write(f"\t\t\t\t<td class=\"taxid\">{result[4]}</td>\n")
-                w.write(f"\t\t\t\t<td class=\"rank\">{result[3]}</td>\n")
-                w.write(f"\t\t\t\t<td class=\"percentage_cover\">{result[0]}</td>\n")
-                w.write(f"\t\t\t\t<td class=\"num_cover\">{result[1]}</td>\n")
-                w.write(f"\t\t\t\t<td class=\"num_ass_direct\">{result[2]}</td>\n")
-                w.write("\t\t\t</tr>\n")
-
+                w.write("\t\t\t\t<tr>\n")
+                w.write(f"\t\t\t\t\t<td id=\"name\">{result[5]}</td>\n")
+                w.write(f"\t\t\t\t\t<td id=\"taxid\">{result[4]}</td>\n")
+                w.write(f"\t\t\t\t\t<td id=\"rank\">{result[3]}</td>\n")
+                w.write(f"\t\t\t\t\t<td id=\"percentage\">{result[0]}</td>\n")
+                w.write(f"\t\t\t\t\t<td id=\"num_cover\">{result[1]}</td>\n")
+                w.write(f"\t\t\t\t\t<td id=\"num_direct\">{result[2]}</td>\n")
+                w.write("\t\t\t\t</tr>\n")
+            w.write("\t\t\t</tbody>\n")
             w.write("\t\t</table>\n")
 
             # embed radial tree image
