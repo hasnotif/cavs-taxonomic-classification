@@ -25,6 +25,7 @@ p {
 #taxonomyTable {
     border: 1px solid black;
     border-collapse: collapse;
+    table-layout: fixed;
     width: 100%;
 }
 
@@ -33,6 +34,10 @@ p {
     border: 1px solid black;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 10px;
+}
+
+#taxonomyTable th.rankable {
+    cursor: pointer;
 }
 
 #taxonomyTable td {
@@ -52,24 +57,6 @@ p {
     padding: 0px;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;  
-    background-color: lightsteelblue;
-    border: 1px solid black;
-}
-
-.dropdown-content a {
-    display: block;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    padding: 10px;
-}
-
-.show {
-    display: block;
+button {
+    cursor: pointer;
 }
