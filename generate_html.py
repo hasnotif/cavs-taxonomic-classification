@@ -15,10 +15,7 @@ def main():
 
     # copy CSS and javascript files to html directory
     shutil.copy("cavs-taxonomic-classification/styles.css", "results")
-    shutil.copy("cavs-taxonomic-classification/theme.default.css", "results")
     shutil.copy("cavs-taxonomic-classification/reportScript.js", "results")
-    shutil.copy("cavs-taxonomic-classification/jquery-3.6.0.js", "results")
-    shutil.copy("cavs-taxonomic-classification/jquery.tablesorter.js", "results")
 
     parser = argparse.ArgumentParser(description = "Creates a HTML report of Kraken2 classification results")
     parser.add_argument("-r", "--kraken2_report", help = "specify Kraken2 report output file")
@@ -32,7 +29,7 @@ def main():
     # calculate classification rate
     rate, total = get_classification_rate(args.kraken2_standard)
 
-    # print taxa results from Kraken2 report - ignore unclassified and groups with 0 seq directly assigned
+    # print taxa results from Kraken2 report - ignore unclassified and groups with 0 seq directly assigned (TBC)
     results = get_taxa_results(args.kraken2_report)
 
     # generate radial tree image, default = tree.svg
@@ -64,10 +61,10 @@ def get_taxa_results(file):
         for line in lines:
             line = line.strip("\n")
             tab = line.split("\t")
-            if tab[2] == "0" or tab[4] == "0":
+            if tab[4] == "0":
                 continue
-            percentage_cover, num_cover, num_ass_direct, rank, taxid, sci_name = tab[0], tab[1], tab[2], tab[3], tab[4], tab[5]
-            result = (percentage_cover, num_cover, num_ass_direct, rank, taxid, sci_name)
+            percentage_cover, num_cover, num_direct, rank, taxid, sci_name = tab[0], tab[1], tab[2], tab[3], tab[4], tab[5]
+            result = (percentage_cover, num_cover, num_direct, rank, taxid, sci_name)
             results.append(result)
             
     return results
