@@ -106,6 +106,10 @@ class HTMLGenerator(object):
             w.write(f"\t\t<p>This report for {self.query_name} was generated on {day} {mth} {year}, {t}.</p>\n")
             w.write("\t\t<h2>Summary of results</h2>\n")
             w.write(f"\t\t<p>Out of {self.total_seq} sequences, {self.cl_rate} are assigned with a taxonomic classification.</p>\n")
+
+            # embed radial tree image
+            w.write("\t\t<h3>Radial tree of Kraken2-classified taxonomic groups</h3>\n")
+            w.write(f"\t\t<img id=\"radialTree\" src=\"{self.tree_img}\" alt=\"radial tree image\" width=\"750\" height=\"750\">\n")
             
             # draw table of taxa results
             w.write(f"\t\t<h2>Table of classified taxonomic groups</h2>\n")
@@ -151,9 +155,6 @@ class HTMLGenerator(object):
                 w.write("\t\t\t\t</tr>\n")
             w.write("\t\t\t</tbody>\n")
             w.write("\t\t</table>\n")
-
-            # embed radial tree image
-            w.write(f"\t\t<object data=\"{self.tree_img}\"> </object>\n")
 
             # embed javascript
             w.write("\t<script src=\"reportScript.js\"></script>\n")
