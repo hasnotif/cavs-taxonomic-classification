@@ -157,7 +157,7 @@ class HTMLGenerator(object):
             w.write("\t\t</table>\n")
 
             # embed javascript
-            w.write("\t<script src=\"reportScript.js\"></script>\n")
+            w.write("\t\t<script src=\"reportScript.js\"></script>\n")
 
             w.write("\t</body>\n")
             w.write("</html>\n")        
