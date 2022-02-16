@@ -6,16 +6,12 @@ import datetime
 import shutil
 
 def main():
-    cwd = os.getcwd()
+    cwd = os.getcwd() # assume home directory
 
     # create 'results' html directory
     res_dir = os.path.join(cwd, "results")
     if not os.path.exists(res_dir):
         os.mkdir(res_dir)
-
-    # copy CSS and javascript files to html directory
-    shutil.copy("cavs-taxonomic-classification/styles.css", "results")
-    shutil.copy("cavs-taxonomic-classification/reportScript.js", "results")
 
     parser = argparse.ArgumentParser(description = "Creates a HTML report of Kraken2 classification results")
     parser.add_argument("-r", "--kraken2_report", help = "specify Kraken2 report output file")
@@ -25,6 +21,12 @@ def main():
     parser.add_argument("-f", "--output_filename", help = "specify filename of HTML report", default = "results.html")
     parser.add_argument("-q", "--query_name", help = "specify a recognisable query name based on your experiment (eg. Pangolin-herpes-tumor-DNA)", default = "Kraken2 query")
     args = parser.parse_args()
+
+    # copy CSS, javascript and Kraken2 output files to html directory
+    shutil.copy(args.kraken2_report, "results")
+    shutil.copy(args.kraken2_standard, "results")
+    shutil.copy("cavs-taxonomic-classification/styles.css", "results")
+    shutil.copy("cavs-taxonomic-classification/reportScript.js", "results")
 
     # calculate classification rate
     rate, total = get_classification_rate(args.kraken2_standard)
