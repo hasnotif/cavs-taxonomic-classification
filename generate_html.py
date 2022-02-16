@@ -11,6 +11,7 @@ def main():
     # create 'results' html directory
     res_dir = os.path.join(cwd, "results")
     if not os.path.exists(res_dir):
+        print("Creating HTML directory...")
         os.mkdir(res_dir)
 
     parser = argparse.ArgumentParser(description = "Creates a HTML report of Kraken2 classification results")
@@ -20,6 +21,7 @@ def main():
     parser.add_argument("-t", "--tree_name", help = "specify filename of radial tree image", default = "tree.svg")
     parser.add_argument("-f", "--output_filename", help = "specify filename of HTML report", default = "results.html")
     parser.add_argument("-q", "--query_name", help = "specify a recognisable query name based on your experiment (eg. Pangolin-herpes-tumor-DNA)", default = "Kraken2 query")
+    parser.add_argument("-u", "--update_taxonomy", help = "update NCBI taxonomy files", action = "store_true")
     args = parser.parse_args()
 
     # copy CSS, javascript and Kraken2 output files to html directory
@@ -29,18 +31,25 @@ def main():
     shutil.copy("cavs-taxonomic-classification/reportScript.js", "results")
 
     # calculate classification rate
+    print("Calculating classification rate...")
     rate, total = get_classification_rate(args.kraken2_standard)
 
     # print taxa results from Kraken2 report - ignore unclassified and groups with 0 seq directly assigned (TBC)
+    print("Obtaining taxa results...")
     results = get_taxa_results(args.kraken2_report)
 
     # generate radial tree image, default = tree.svg
-    os.system(f"~/cavs-taxonomic-classification/generate_radial_tree.py {args.kraken2_report} -o {args.tree_name}")
+    print("Generating radial taxonomy tree...")
+    cmd = f"~/cavs-taxonomic-classification/generate_radial_tree.py {args.kraken2_report} -o {args.tree_name}"
+    if args.update_taxonomy:
+        cmd += f" --update_taxonomy"
+    os.system(cmd)
 
     # generate HTML file
     page = HTMLGenerator(args.output_filename, total, rate, args.tree_name, args.query_name)
     page.add_taxa_results(results)
     page.write(args.output_dir)
+    print("HTML file successfully generated")
 
 def get_classification_rate(file):
     with open(file, "r") as r:
