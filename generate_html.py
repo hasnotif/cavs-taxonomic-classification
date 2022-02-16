@@ -35,7 +35,7 @@ def main():
     results = get_taxa_results(args.kraken2_report)
 
     # generate radial tree image, default = tree.svg
-    os.system(f"~/cavs-taxonomic-classification/generate_radial_tree.py {args.kraken2_standard} -o {args.tree_name}")
+    os.system(f"~/cavs-taxonomic-classification/generate_radial_tree.py {args.kraken2_report} -o {args.tree_name}")
 
     # generate HTML file
     page = HTMLGenerator(args.output_filename, total, rate, args.tree_name, args.query_name)
