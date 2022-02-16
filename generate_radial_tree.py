@@ -2,7 +2,6 @@
 
 import os
 import argparse
-import re
 from ete3 import NCBITaxa, TreeStyle, NodeStyle, CircleFace, TextFace
 
 def main():
@@ -21,6 +20,7 @@ def main():
     parser = argparse.ArgumentParser(description = "Reads in Kraken2 classification output and produces a radial tree of the identified taxonomic groups")
     parser.add_argument("i", help = "specify Kraken2 classification output file")
     parser.add_argument("-o", "--output_tree", help = "specify filename of output tree image (default filetype = .svg)", default = "tree.svg")
+    parser.add_argument("-u", "--update_taxonomy", help = "update NCBI taxonomy files", action = "store_true")
     args = parser.parse_args()
 
     # obtain classified taxids from Kraken2 output file
@@ -28,16 +28,15 @@ def main():
         classified_taxids = []
         for line in r:
             tab = line.split("\t")
-            cu = tab[0]
-            if cu == "C":
-                taxid = tab[2]
-                if not taxid.isdigit():
-                    taxid = extract_taxid(taxid)
-                if taxid not in classified_taxids:
-                    classified_taxids.append(taxid)
+            if "R" in tab[3] or "U" in tab[3]:
+                continue
+            else:
+                classified_taxids.append(tab[4])
 
     # Prune NCBI taxonomy tree & annotate each leaf with sci name and taxonomic rank
     ncbi = NCBITaxa()
+    if args.update_taxonomy:
+        ncbi.update_taxonomy_database()
     tree = ncbi.get_topology(classified_taxids)
     classified_taxids2name = ncbi.get_taxid_translator(classified_taxids)
     classified_taxids2rank = ncbi.get_rank(classified_taxids)
@@ -53,7 +52,7 @@ def main():
     ts.mode = "c"
     ts.arc_start = -180
     ts.arc_span = 359
-    ts.legend.add_face(TextFace("Phyla", fsize = 300, bold = True), column = 0)
+    ts.legend.add_face(TextFace("Phyla", fsize = 100, bold = True), column = 0)
     ts.legend.add_face(CircleFace(0, "White", style = "circle"), column = 1)
     ts.legend_position = 4
 
@@ -64,8 +63,8 @@ def main():
         style["bgcolor"] = colours[idx]
         node.set_style(style)
 
-        ts.legend.add_face(CircleFace(300, colours[idx]), column = 0)
-        ts.legend.add_face(TextFace(f" {node.sci_name}", fsize = 300), column = 1)
+        ts.legend.add_face(CircleFace(100, colours[idx]), column = 0)
+        ts.legend.add_face(TextFace(f" {node.sci_name}", fsize = 100), column = 1)
         idx += 1
 
     tree.render("tree.svg", w = 180, units = "mm", tree_style = ts)
@@ -79,15 +78,6 @@ def layout(node):
     if node.is_leaf():
         node.set_style(style2)
     
-# eg. Streptococcus agalactiae (taxid 2754)
-def extract_taxid(name):
-    p1 = re.compile(r"taxid (\d+)")
-    m1 = p1.search(name).group()
-    idx1 = m1.index(" ")
-    idx2 = len(m1)
-    taxid = m1[idx1+1:idx2]
-    return taxid
-
 if __name__ == "__main__":
     main()
 
