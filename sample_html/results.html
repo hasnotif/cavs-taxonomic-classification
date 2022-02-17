@@ -1,0 +1,3276 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="styles.css">
+		<h1 id="header">Kraken2 taxonomic classification results</h1>
+	</head>
+	<body>
+		<h2>Report details</h2>
+		<p>This report for Siniae_experiment was generated on 16 February 2022, 17:08:38.</p>
+		<h2>Summary of results</h2>
+		<p>Out of 1107558 sequences, 4.55% are assigned with a taxonomic classification.</p>
+		<h3>Radial tree of Kraken2-classified taxonomic groups</h3>
+		<img id="radialTree" src="tree.svg" alt="radial tree image" width="750" height="750">
+		<h2>Table of classified taxonomic groups</h2>
+		<table id="taxonomyTable" class="tablesorter">
+			<thead>
+				<tr>
+					<th>Taxon Name</th>
+					<th>Taxonomic ID</th>
+					<th>
+						<select name="rankList" id="rankList" class="form-control">
+							<option selected disabled>Rank</option>
+							<option value="Domain">Domain</option>
+							<option value="Kingdom">Kingdom</option>
+							<option value="Phylum">Phylum</option>
+							<option value="Class">Class</option>
+							<option value="Order">Order</option>
+							<option value="Family">Family</option>
+							<option value="Genus">Genus</option>
+							<option value="Species">Species</option>
+							<option value="All Ranks">All Ranks</option>
+						</select>
+					</th>
+					<th id="3" class="rankable">Percentage of fragments covered (%)</th>
+					<th id="4" class="rankable">Number of fragments covered</th>
+					<th id="5" class="rankable">Number of fragments directly assigned</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td id="name">root</td>
+					<td id="taxid">1</td>
+					<td id="rank">R</td>
+					<td id="percentage">  4.55</td>
+					<td id="num_cover">50408</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">  cellular organisms</td>
+					<td id="taxid">131567</td>
+					<td id="rank">R1</td>
+					<td id="percentage">  4.55</td>
+					<td id="num_cover">50408</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">    Bacteria</td>
+					<td id="taxid">2</td>
+					<td id="rank">D</td>
+					<td id="percentage">  4.55</td>
+					<td id="num_cover">50408</td>
+					<td id="num_direct">1747</td>
+				</tr>
+				<tr>
+					<td id="name">      Fusobacteria</td>
+					<td id="taxid">32066</td>
+					<td id="rank">P</td>
+					<td id="percentage">  2.31</td>
+					<td id="num_cover">25554</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">        Fusobacteriia</td>
+					<td id="taxid">203490</td>
+					<td id="rank">C</td>
+					<td id="percentage">  2.31</td>
+					<td id="num_cover">25554</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">          Fusobacteriales</td>
+					<td id="taxid">203491</td>
+					<td id="rank">O</td>
+					<td id="percentage">  2.31</td>
+					<td id="num_cover">25554</td>
+					<td id="num_direct">659</td>
+				</tr>
+				<tr>
+					<td id="name">            Fusobacteriaceae</td>
+					<td id="taxid">203492</td>
+					<td id="rank">F</td>
+					<td id="percentage">  1.50</td>
+					<td id="num_cover">16638</td>
+					<td id="num_direct">950</td>
+				</tr>
+				<tr>
+					<td id="name">              Fusobacterium</td>
+					<td id="taxid">848</td>
+					<td id="rank">G</td>
+					<td id="percentage">  1.23</td>
+					<td id="num_cover">13665</td>
+					<td id="num_direct">2051</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium nucleatum</td>
+					<td id="taxid">851</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.63</td>
+					<td id="num_cover">6944</td>
+					<td id="num_direct">6830</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium nucleatum CTI-5</td>
+					<td id="taxid">1316586</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">81</td>
+					<td id="num_direct">81</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium nucleatum subsp. polymorphum</td>
+					<td id="taxid">76857</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">19</td>
+					<td id="num_direct">16</td>
+				</tr>
+				<tr>
+					<td id="name">                    Fusobacterium nucleatum subsp. polymorphum ATCC 10953</td>
+					<td id="taxid">393480</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium nucleatum subsp. animalis</td>
+					<td id="taxid">76859</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">7</td>
+					<td id="num_direct">7</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium nucleatum subsp. vincentii</td>
+					<td id="taxid">155615</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">5</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                    Fusobacterium nucleatum subsp. vincentii ChDC F8</td>
+					<td id="taxid">1307427</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium nucleatum subsp. nucleatum</td>
+					<td id="taxid">76856</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Fusobacterium nucleatum subsp. nucleatum ATCC 23726</td>
+					<td id="taxid">525283</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium nucleatum W1481</td>
+					<td id="taxid">1408287</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Fusobacterium</td>
+					<td id="taxid">2648384</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.13</td>
+					<td id="num_cover">1408</td>
+					<td id="num_direct">743</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium sp. IOR10</td>
+					<td id="taxid">2665157</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">304</td>
+					<td id="num_direct">304</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium sp. oral taxon 370</td>
+					<td id="taxid">712288</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">146</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Fusobacterium sp. oral taxon 370 str. F0437</td>
+					<td id="taxid">861452</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">146</td>
+					<td id="num_direct">146</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium sp. NSJ-57</td>
+					<td id="taxid">2764326</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">137</td>
+					<td id="num_direct">137</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium sp. CM21</td>
+					<td id="taxid">936562</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">69</td>
+					<td id="num_direct">69</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium sp. FSA-380-WT-3A</td>
+					<td id="taxid">2725304</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">6</td>
+					<td id="num_direct">6</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium sp. CM1</td>
+					<td id="taxid">936561</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium sp. OBRC1</td>
+					<td id="taxid">1032505</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium sp. FSA-380-WT-2B</td>
+					<td id="taxid">2605786</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium ulcerans</td>
+					<td id="taxid">861</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">694</td>
+					<td id="num_direct">4</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium ulcerans ATCC 49185</td>
+					<td id="taxid">469617</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">690</td>
+					<td id="num_direct">690</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium mortiferum</td>
+					<td id="taxid">850</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">493</td>
+					<td id="num_direct">493</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium naviforme</td>
+					<td id="taxid">77917</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">477</td>
+					<td id="num_direct">477</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium perfoetens</td>
+					<td id="taxid">852</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">362</td>
+					<td id="num_direct">280</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium perfoetens ATCC 29250</td>
+					<td id="taxid">1408439</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">82</td>
+					<td id="num_direct">82</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium necrophorum</td>
+					<td id="taxid">859</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">362</td>
+					<td id="num_direct">321</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium necrophorum subsp. funduliforme</td>
+					<td id="taxid">143387</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">41</td>
+					<td id="num_direct">41</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium necrogenes</td>
+					<td id="taxid">858</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">189</td>
+					<td id="num_direct">189</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium hwasookii</td>
+					<td id="taxid">1583098</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">172</td>
+					<td id="num_direct">172</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium canifelinum</td>
+					<td id="taxid">285729</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">172</td>
+					<td id="num_direct">172</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium pseudoperiodonticum</td>
+					<td id="taxid">2663009</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">165</td>
+					<td id="num_direct">165</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium russii</td>
+					<td id="taxid">854</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">110</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium russii ATCC 25533</td>
+					<td id="taxid">1278306</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">110</td>
+					<td id="num_direct">110</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium massiliense</td>
+					<td id="taxid">1852365</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">58</td>
+					<td id="num_direct">58</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium periodonticum</td>
+					<td id="taxid">860</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">7</td>
+					<td id="num_direct">5</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium periodonticum ATCC 33693</td>
+					<td id="taxid">546275</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Fusobacterium periodonticum D10</td>
+					<td id="taxid">620833</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Fusobacterium varium</td>
+					<td id="taxid">856</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Cetobacterium</td>
+					<td id="taxid">180162</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.14</td>
+					<td id="num_cover">1503</td>
+					<td id="num_direct">322</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Cetobacterium</td>
+					<td id="taxid">2630983</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.09</td>
+					<td id="num_cover">942</td>
+					<td id="num_direct">295</td>
+				</tr>
+				<tr>
+					<td id="name">                  Cetobacterium sp. ZWU0022</td>
+					<td id="taxid">1340502</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">354</td>
+					<td id="num_direct">354</td>
+				</tr>
+				<tr>
+					<td id="name">                  Cetobacterium sp. ZOR0034</td>
+					<td id="taxid">1339239</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">174</td>
+					<td id="num_direct">174</td>
+				</tr>
+				<tr>
+					<td id="name">                  Cetobacterium sp. 2A</td>
+					<td id="taxid">2754723</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">117</td>
+					<td id="num_direct">117</td>
+				</tr>
+				<tr>
+					<td id="name">                  Cetobacterium sp. 8H</td>
+					<td id="taxid">2759681</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Cetobacterium ceti</td>
+					<td id="taxid">180163</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">173</td>
+					<td id="num_direct">173</td>
+				</tr>
+				<tr>
+					<td id="name">                Cetobacterium somerae</td>
+					<td id="taxid">188913</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">66</td>
+					<td id="num_direct">66</td>
+				</tr>
+				<tr>
+					<td id="name">              Ilyobacter</td>
+					<td id="taxid">167639</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">194</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Ilyobacter polytropus</td>
+					<td id="taxid">167642</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">194</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Ilyobacter polytropus DSM 2926</td>
+					<td id="taxid">572544</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">194</td>
+					<td id="num_direct">194</td>
+				</tr>
+				<tr>
+					<td id="name">              Hypnocyclicus</td>
+					<td id="taxid">1940855</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">175</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Hypnocyclicus thermotrophus</td>
+					<td id="taxid">1627895</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">175</td>
+					<td id="num_direct">175</td>
+				</tr>
+				<tr>
+					<td id="name">              Psychrilyobacter</td>
+					<td id="taxid">623282</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">151</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Psychrilyobacter atlanticus</td>
+					<td id="taxid">271091</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">86</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Psychrilyobacter atlanticus DSM 19335</td>
+					<td id="taxid">1123032</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">86</td>
+					<td id="num_direct">86</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Psychrilyobacter</td>
+					<td id="taxid">2646026</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">65</td>
+					<td id="num_direct">65</td>
+				</tr>
+				<tr>
+					<td id="name">            Leptotrichiaceae</td>
+					<td id="taxid">1129771</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.75</td>
+					<td id="num_cover">8257</td>
+					<td id="num_direct">858</td>
+				</tr>
+				<tr>
+					<td id="name">              Leptotrichia</td>
+					<td id="taxid">32067</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.36</td>
+					<td id="num_cover">3956</td>
+					<td id="num_direct">1057</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Leptotrichia</td>
+					<td id="taxid">2633022</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.19</td>
+					<td id="num_cover">2129</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. OH3620_COT-345</td>
+					<td id="taxid">2491048</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.07</td>
+					<td id="num_cover">742</td>
+					<td id="num_direct">742</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 215</td>
+					<td id="taxid">712359</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">614</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptotrichia sp. oral taxon 215 str. W9775</td>
+					<td id="taxid">1321779</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">614</td>
+					<td id="num_direct">614</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 223</td>
+					<td id="taxid">712363</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">285</td>
+					<td id="num_direct">285</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 847</td>
+					<td id="taxid">1785996</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">115</td>
+					<td id="num_direct">115</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 498</td>
+					<td id="taxid">712368</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">96</td>
+					<td id="num_direct">96</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 225</td>
+					<td id="taxid">671213</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">94</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptotrichia sp. oral taxon 225 str. F0581</td>
+					<td id="taxid">1321774</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">94</td>
+					<td id="num_direct">94</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 221</td>
+					<td id="taxid">712362</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">78</td>
+					<td id="num_direct">78</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 218</td>
+					<td id="taxid">712361</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">62</td>
+					<td id="num_direct">62</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 879</td>
+					<td id="taxid">1227267</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">34</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptotrichia sp. oral taxon 879 str. F0557</td>
+					<td id="taxid">1227268</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">34</td>
+					<td id="num_direct">34</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia sp. oral taxon 212</td>
+					<td id="taxid">712357</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">8</td>
+					<td id="num_direct">8</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptotrichia hongkongensis</td>
+					<td id="taxid">554406</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">233</td>
+					<td id="num_direct">233</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptotrichia trevisanii</td>
+					<td id="taxid">109328</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">209</td>
+					<td id="num_direct">209</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptotrichia buccalis</td>
+					<td id="taxid">40542</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">179</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia buccalis C-1013-b</td>
+					<td id="taxid">523794</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">179</td>
+					<td id="num_direct">179</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptotrichia wadei</td>
+					<td id="taxid">157687</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">143</td>
+					<td id="num_direct">142</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia wadei F0279</td>
+					<td id="taxid">888055</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptotrichia shahii</td>
+					<td id="taxid">157691</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptotrichia hofstadii</td>
+					<td id="taxid">157688</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptotrichia hofstadii F0254</td>
+					<td id="taxid">634994</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptotrichia massiliensis</td>
+					<td id="taxid">1852388</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Streptobacillus</td>
+					<td id="taxid">34104</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.18</td>
+					<td id="num_cover">1992</td>
+					<td id="num_direct">399</td>
+				</tr>
+				<tr>
+					<td id="name">                Streptobacillus moniliformis</td>
+					<td id="taxid">34105</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">648</td>
+					<td id="num_direct">648</td>
+				</tr>
+				<tr>
+					<td id="name">                Streptobacillus canis</td>
+					<td id="taxid">2678686</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">482</td>
+					<td id="num_direct">482</td>
+				</tr>
+				<tr>
+					<td id="name">                Streptobacillus felis</td>
+					<td id="taxid">1384509</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">246</td>
+					<td id="num_direct">246</td>
+				</tr>
+				<tr>
+					<td id="name">                Streptobacillus notomytis</td>
+					<td id="taxid">1712031</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">186</td>
+					<td id="num_direct">186</td>
+				</tr>
+				<tr>
+					<td id="name">                Streptobacillus ratti</td>
+					<td id="taxid">1720557</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">31</td>
+					<td id="num_direct">31</td>
+				</tr>
+				<tr>
+					<td id="name">              Sneathia</td>
+					<td id="taxid">168808</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">653</td>
+					<td id="num_direct">168</td>
+				</tr>
+				<tr>
+					<td id="name">                Sneathia sanguinegens</td>
+					<td id="taxid">40543</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">270</td>
+					<td id="num_direct">270</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Sneathia</td>
+					<td id="taxid">2776142</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">214</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Sneathia sp. DSM 16631</td>
+					<td id="taxid">2777994</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">214</td>
+					<td id="num_direct">214</td>
+				</tr>
+				<tr>
+					<td id="name">                Sneathia vaginalis</td>
+					<td id="taxid">187101</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Oceanivirga</td>
+					<td id="taxid">1824856</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">378</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Oceanivirga salmonicida</td>
+					<td id="taxid">1769291</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">200</td>
+					<td id="num_direct">200</td>
+				</tr>
+				<tr>
+					<td id="name">                Oceanivirga miroungae</td>
+					<td id="taxid">1130046</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">178</td>
+					<td id="num_direct">178</td>
+				</tr>
+				<tr>
+					<td id="name">              Sebaldella</td>
+					<td id="taxid">32068</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">163</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Sebaldella termitidis</td>
+					<td id="taxid">826</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">163</td>
+					<td id="num_direct">163</td>
+				</tr>
+				<tr>
+					<td id="name">              Caviibacter</td>
+					<td id="taxid">1792239</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">133</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Caviibacter abscessus</td>
+					<td id="taxid">1766719</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">133</td>
+					<td id="num_direct">133</td>
+				</tr>
+				<tr>
+					<td id="name">              Pseudoleptotrichia</td>
+					<td id="taxid">2755140</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">124</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Pseudoleptotrichia goodfellowii</td>
+					<td id="taxid">157692</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">124</td>
+					<td id="num_direct">124</td>
+				</tr>
+				<tr>
+					<td id="name">      Spirochaetes</td>
+					<td id="taxid">203691</td>
+					<td id="rank">P</td>
+					<td id="percentage">  1.82</td>
+					<td id="num_cover">20112</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">        Spirochaetia</td>
+					<td id="taxid">203692</td>
+					<td id="rank">C</td>
+					<td id="percentage">  1.82</td>
+					<td id="num_cover">20112</td>
+					<td id="num_direct">924</td>
+				</tr>
+				<tr>
+					<td id="name">          Leptospirales</td>
+					<td id="taxid">1643688</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.70</td>
+					<td id="num_cover">7801</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Leptospiraceae</td>
+					<td id="taxid">170</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.70</td>
+					<td id="num_cover">7801</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">              Leptospira</td>
+					<td id="taxid">171</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.68</td>
+					<td id="num_cover">7571</td>
+					<td id="num_direct">738</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira borgpetersenii</td>
+					<td id="taxid">174</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.18</td>
+					<td id="num_cover">1974</td>
+					<td id="num_direct">442</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira borgpetersenii serovar Tarassovi</td>
+					<td id="taxid">280506</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.09</td>
+					<td id="num_cover">946</td>
+					<td id="num_direct">946</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira borgpetersenii serovar Ballum</td>
+					<td id="taxid">280505</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.05</td>
+					<td id="num_cover">580</td>
+					<td id="num_direct">580</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira borgpetersenii serovar Balcanica</td>
+					<td id="taxid">508535</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira borgpetersenii serovar Javanica</td>
+					<td id="taxid">280504</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira borgpetersenii serovar Javanica str. L0864</td>
+					<td id="taxid">1049765</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira borgpetersenii serovar Arborea</td>
+					<td id="taxid">652580</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira interrogans</td>
+					<td id="taxid">173</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.10</td>
+					<td id="num_cover">1128</td>
+					<td id="num_direct">14</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira interrogans serovar Pomona</td>
+					<td id="taxid">44276</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.10</td>
+					<td id="num_cover">1100</td>
+					<td id="num_direct">1100</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira interrogans serovar Australis</td>
+					<td id="taxid">211882</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">8</td>
+					<td id="num_direct">8</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira interrogans serovar Copenhageni</td>
+					<td id="taxid">44275</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira interrogans serovar Copenhageni str. Fiocruz LV2772</td>
+					<td id="taxid">996827</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira interrogans serovar Hardjo</td>
+					<td id="taxid">176</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira interrogans serovar Lai</td>
+					<td id="taxid">57678</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira interrogans serovar Lai str. Lai LPS mutant</td>
+					<td id="taxid">1049912</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira interrogans serovar Medanensis</td>
+					<td id="taxid">508525</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira interrogans serovar Medanensis str. UT053</td>
+					<td id="taxid">1049922</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Leptospira</td>
+					<td id="taxid">2633828</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.07</td>
+					<td id="num_cover">777</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira sp. Pond_2020</td>
+					<td id="taxid">2846916</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.07</td>
+					<td id="num_cover">773</td>
+					<td id="num_direct">773</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira sp. B5-022</td>
+					<td id="taxid">1242992</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">4</td>
+					<td id="num_direct">4</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira santarosai</td>
+					<td id="taxid">28183</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">402</td>
+					<td id="num_direct">248</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira santarosai str. JET</td>
+					<td id="taxid">1193057</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">140</td>
+					<td id="num_direct">140</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira santarosai serovar Guaricura</td>
+					<td id="taxid">508589</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">10</td>
+					<td id="num_direct">10</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira santarosai serovar Grippotyphosa</td>
+					<td id="taxid">1933030</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira santarosai serovar Bananal</td>
+					<td id="taxid">1542967</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira montravelensis</td>
+					<td id="taxid">2484961</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">298</td>
+					<td id="num_direct">298</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira sarikeiensis</td>
+					<td id="taxid">2484943</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">231</td>
+					<td id="num_direct">231</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira bourretii</td>
+					<td id="taxid">2484962</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">210</td>
+					<td id="num_direct">210</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira levettii</td>
+					<td id="taxid">2023178</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">191</td>
+					<td id="num_direct">191</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira perdikensis</td>
+					<td id="taxid">2484948</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">189</td>
+					<td id="num_direct">189</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira barantonii</td>
+					<td id="taxid">2023184</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">166</td>
+					<td id="num_direct">166</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira johnsonii</td>
+					<td id="taxid">1917820</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">159</td>
+					<td id="num_direct">159</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira mtsangambouensis</td>
+					<td id="taxid">2484912</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">158</td>
+					<td id="num_direct">158</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira kobayashii</td>
+					<td id="taxid">1917830</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">126</td>
+					<td id="num_direct">126</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira hartskeerlii</td>
+					<td id="taxid">2023177</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">99</td>
+					<td id="num_direct">99</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira neocaledonica</td>
+					<td id="taxid">2023192</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">73</td>
+					<td id="num_direct">73</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira kemamanensis</td>
+					<td id="taxid">2484942</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">69</td>
+					<td id="num_direct">69</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira ellinghausenii</td>
+					<td id="taxid">1917822</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">65</td>
+					<td id="num_direct">65</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira ryugenii</td>
+					<td id="taxid">1917863</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">59</td>
+					<td id="num_direct">59</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira ognonensis</td>
+					<td id="taxid">2484945</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">58</td>
+					<td id="num_direct">58</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira brenneri</td>
+					<td id="taxid">2023182</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">55</td>
+					<td id="num_direct">55</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira vanthielii</td>
+					<td id="taxid">293085</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">54</td>
+					<td id="num_direct">54</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira meyeri</td>
+					<td id="taxid">29508</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">49</td>
+					<td id="num_direct">46</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira meyeri serovar Semaranga</td>
+					<td id="taxid">293080</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira meyeri serovar Semaranga str. Veldrot Semarang 173</td>
+					<td id="taxid">1218585</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira meyeri serovar Hardjo</td>
+					<td id="taxid">293077</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira meyeri serovar Hardjo str. Went 5</td>
+					<td id="taxid">1193051</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira kanakyensis</td>
+					<td id="taxid">2484968</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">48</td>
+					<td id="num_direct">48</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira weilii</td>
+					<td id="taxid">28184</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">46</td>
+					<td id="num_direct">46</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira congkakensis</td>
+					<td id="taxid">2484932</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">44</td>
+					<td id="num_direct">44</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira licerasiae</td>
+					<td id="taxid">447106</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">30</td>
+					<td id="num_direct">30</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira haakeii</td>
+					<td id="taxid">2023198</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">29</td>
+					<td id="num_direct">29</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira fletcheri</td>
+					<td id="taxid">2484981</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">13</td>
+					<td id="num_direct">13</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira kirschneri</td>
+					<td id="taxid">29507</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">9</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira kirschneri serovar Grippotyphosa</td>
+					<td id="taxid">38345</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira kirschneri serovar Valbuzzi</td>
+					<td id="taxid">1049967</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira kirschneri serovar Valbuzzi str. 200702274</td>
+					<td id="taxid">1049968</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira kirschneri serovar Bim</td>
+					<td id="taxid">330702</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira fluminis</td>
+					<td id="taxid">2484979</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">4</td>
+					<td id="num_direct">4</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira venezuelensis</td>
+					<td id="taxid">1958811</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira semungkisensis</td>
+					<td id="taxid">2484985</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira perolatii</td>
+					<td id="taxid">2023191</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira yanagawae</td>
+					<td id="taxid">293069</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira yanagawae serovar Saopaulo</td>
+					<td id="taxid">293070</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira yanagawae serovar Saopaulo str. Sao Paulo = ATCC 700523</td>
+					<td id="taxid">1249483</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira noguchii</td>
+					<td id="taxid">28182</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira kmetyi</td>
+					<td id="taxid">408139</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira andrefontaineae</td>
+					<td id="taxid">2484976</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira stimsonii</td>
+					<td id="taxid">2202203</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira ilyithenensis</td>
+					<td id="taxid">2484901</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira bandrabouensis</td>
+					<td id="taxid">2484903</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira terpstrae</td>
+					<td id="taxid">293075</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospira terpstrae serovar Hualin</td>
+					<td id="taxid">293076</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospira terpstrae serovar Hualin str. LT 11-33 = ATCC 700639</td>
+					<td id="taxid">1257025</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira idonii</td>
+					<td id="taxid">1193500</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospira mayottensis</td>
+					<td id="taxid">1137606</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Turneriella</td>
+					<td id="taxid">338321</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">200</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Turneriella parva</td>
+					<td id="taxid">29510</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">200</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Turneriella parva DSM 21527</td>
+					<td id="taxid">869212</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">200</td>
+					<td id="num_direct">200</td>
+				</tr>
+				<tr>
+					<td id="name">              Leptonema</td>
+					<td id="taxid">32205</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">27</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptonema illini</td>
+					<td id="taxid">183</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">27</td>
+					<td id="num_direct">27</td>
+				</tr>
+				<tr>
+					<td id="name">          Spirochaetales</td>
+					<td id="taxid">136</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.70</td>
+					<td id="num_cover">7743</td>
+					<td id="num_direct">175</td>
+				</tr>
+				<tr>
+					<td id="name">            Treponemataceae</td>
+					<td id="taxid">2845253</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.39</td>
+					<td id="num_cover">4339</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Treponema</td>
+					<td id="taxid">157</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.39</td>
+					<td id="num_cover">4338</td>
+					<td id="num_direct">72</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Treponema</td>
+					<td id="taxid">2638727</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.10</td>
+					<td id="num_cover">1099</td>
+					<td id="num_direct">42</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema sp. C6A8</td>
+					<td id="taxid">1410609</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">456</td>
+					<td id="num_direct">456</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema sp. Marseille-Q3903</td>
+					<td id="taxid">2766703</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">323</td>
+					<td id="num_direct">323</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema sp. OMZ 838</td>
+					<td id="taxid">1539298</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">213</td>
+					<td id="num_direct">213</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema sp. Marseille-Q4523</td>
+					<td id="taxid">2810610</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">60</td>
+					<td id="num_direct">60</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema sp. JC4</td>
+					<td id="taxid">1124982</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema sp. J25</td>
+					<td id="taxid">2094121</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema sp. Marseille-Q4132</td>
+					<td id="taxid">2766701</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema bryantii</td>
+					<td id="taxid">163</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.08</td>
+					<td id="num_cover">869</td>
+					<td id="num_direct">243</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema bryantii NK4A124</td>
+					<td id="taxid">877418</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">626</td>
+					<td id="num_direct">626</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema pedis</td>
+					<td id="taxid">409322</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">437</td>
+					<td id="num_direct">437</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema pectinovorum</td>
+					<td id="taxid">164</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">389</td>
+					<td id="num_direct">389</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema berlinense</td>
+					<td id="taxid">225004</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">292</td>
+					<td id="num_direct">292</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema phagedenis</td>
+					<td id="taxid">162</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">187</td>
+					<td id="num_direct">187</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema peruense</td>
+					<td id="taxid">2787628</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">177</td>
+					<td id="num_direct">177</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema rectale</td>
+					<td id="taxid">744512</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">171</td>
+					<td id="num_direct">171</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema vincentii</td>
+					<td id="taxid">69710</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">152</td>
+					<td id="num_direct">151</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema vincentii F0403</td>
+					<td id="taxid">1125702</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema endosymbiont of Eucomonympha sp.</td>
+					<td id="taxid">1580831</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">145</td>
+					<td id="num_direct">145</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema succinifaciens</td>
+					<td id="taxid">167</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">143</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema succinifaciens DSM 2489</td>
+					<td id="taxid">869209</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">143</td>
+					<td id="num_direct">143</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema denticola</td>
+					<td id="taxid">158</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">98</td>
+					<td id="num_direct">98</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema porcinum</td>
+					<td id="taxid">261392</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">55</td>
+					<td id="num_direct">55</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema zioleckii</td>
+					<td id="taxid">331680</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">25</td>
+					<td id="num_direct">25</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema azotonutricium</td>
+					<td id="taxid">150829</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">14</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema azotonutricium ZAS-9</td>
+					<td id="taxid">545695</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">14</td>
+					<td id="num_direct">14</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema socranskii</td>
+					<td id="taxid">53419</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema socranskii subsp. socranskii</td>
+					<td id="taxid">69715</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Treponema socranskii subsp. socranskii VPI DR56BR1116 = ATCC 35536</td>
+					<td id="taxid">1125725</td>
+					<td id="rank">S2</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema socranskii subsp. buccale</td>
+					<td id="taxid">69713</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema brennaborense</td>
+					<td id="taxid">81028</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema brennaborense DSM 12168</td>
+					<td id="taxid">906968</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema pallidum</td>
+					<td id="taxid">160</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema pallidum subsp. pertenue</td>
+					<td id="taxid">168</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema zuelzerae</td>
+					<td id="taxid">156</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema primitia</td>
+					<td id="taxid">88058</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema primitia ZAS-2</td>
+					<td id="taxid">545694</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema putidum</td>
+					<td id="taxid">221027</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema medium</td>
+					<td id="taxid">58231</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Treponema paraluiscuniculi</td>
+					<td id="taxid">53435</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Treponema paraluiscuniculi Cuniculi A</td>
+					<td id="taxid">545776</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Rectinema</td>
+					<td id="taxid">1937016</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Rectinema</td>
+					<td id="taxid">2646393</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Rectinema subterraneum</td>
+					<td id="taxid">2653714</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">            Spirochaetaceae</td>
+					<td id="taxid">137</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.18</td>
+					<td id="num_cover">1940</td>
+					<td id="num_direct">27</td>
+				</tr>
+				<tr>
+					<td id="name">              Oceanispirochaeta</td>
+					<td id="taxid">2035349</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.09</td>
+					<td id="num_cover">1015</td>
+					<td id="num_direct">989</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Oceanispirochaeta</td>
+					<td id="taxid">2635722</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">26</td>
+					<td id="num_direct">26</td>
+				</tr>
+				<tr>
+					<td id="name">              Spirochaeta</td>
+					<td id="taxid">146</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">410</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Spirochaeta isovalerica</td>
+					<td id="taxid">150</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">215</td>
+					<td id="num_direct">215</td>
+				</tr>
+				<tr>
+					<td id="name">                Spirochaeta cellobiosiphila</td>
+					<td id="taxid">504483</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">132</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Spirochaeta cellobiosiphila DSM 17781</td>
+					<td id="taxid">1123275</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">132</td>
+					<td id="num_direct">132</td>
+				</tr>
+				<tr>
+					<td id="name">                Spirochaeta lutea</td>
+					<td id="taxid">1480694</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">61</td>
+					<td id="num_direct">61</td>
+				</tr>
+				<tr>
+					<td id="name">                Spirochaeta thermophila</td>
+					<td id="taxid">154</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Entomospira</td>
+					<td id="taxid">2834378</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">351</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Entomospira entomophilus</td>
+					<td id="taxid">2719988</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">305</td>
+					<td id="num_direct">305</td>
+				</tr>
+				<tr>
+					<td id="name">                Entomospira culicis</td>
+					<td id="taxid">2719989</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">44</td>
+					<td id="num_direct">44</td>
+				</tr>
+				<tr>
+					<td id="name">                Entomospira nematocera</td>
+					<td id="taxid">2719987</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Thiospirochaeta</td>
+					<td id="taxid">2792240</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">88</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Thiospirochaeta perfilievii</td>
+					<td id="taxid">252967</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">88</td>
+					<td id="num_direct">88</td>
+				</tr>
+				<tr>
+					<td id="name">              Sediminispirochaeta</td>
+					<td id="taxid">1911556</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">42</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Sediminispirochaeta smaragdinae</td>
+					<td id="taxid">55206</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">40</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Sediminispirochaeta smaragdinae DSM 11293</td>
+					<td id="taxid">573413</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">40</td>
+					<td id="num_direct">40</td>
+				</tr>
+				<tr>
+					<td id="name">                Sediminispirochaeta bajacaliforniensis</td>
+					<td id="taxid">148</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Sediminispirochaeta bajacaliforniensis DSM 16054</td>
+					<td id="taxid">1123274</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Bullifex</td>
+					<td id="taxid">2815782</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">5</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Bullifex porci</td>
+					<td id="taxid">2606638</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">5</td>
+					<td id="num_direct">5</td>
+				</tr>
+				<tr>
+					<td id="name">              Marispirochaeta</td>
+					<td id="taxid">1911565</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">            Borreliaceae</td>
+					<td id="taxid">1643685</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.11</td>
+					<td id="num_cover">1242</td>
+					<td id="num_direct">85</td>
+				</tr>
+				<tr>
+					<td id="name">              Borreliella</td>
+					<td id="taxid">64895</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.05</td>
+					<td id="num_cover">601</td>
+					<td id="num_direct">343</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella garinii</td>
+					<td id="taxid">29519</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">168</td>
+					<td id="num_direct">162</td>
+				</tr>
+				<tr>
+					<td id="name">                  Borreliella garinii subsp. bavariensis</td>
+					<td id="taxid">664662</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">6</td>
+					<td id="num_direct">6</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella burgdorferi</td>
+					<td id="taxid">139</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">59</td>
+					<td id="num_direct">59</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella afzelii</td>
+					<td id="taxid">29518</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">20</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Borreliella afzelii K78</td>
+					<td id="taxid">411555</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">20</td>
+					<td id="num_direct">20</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella bissettiae</td>
+					<td id="taxid">64897</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Borreliella bissettii DN127</td>
+					<td id="taxid">521010</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella valaisiana</td>
+					<td id="taxid">62088</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella spielmanii</td>
+					<td id="taxid">88916</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella turdi</td>
+					<td id="taxid">57863</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella finlandensis</td>
+					<td id="taxid">498741</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Borreliella yangtzensis</td>
+					<td id="taxid">683292</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Borrelia</td>
+					<td id="taxid">138</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.05</td>
+					<td id="num_cover">556</td>
+					<td id="num_direct">335</td>
+				</tr>
+				<tr>
+					<td id="name">                Borrelia miyamotoi</td>
+					<td id="taxid">47466</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">91</td>
+					<td id="num_direct">91</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Borrelia</td>
+					<td id="taxid">2649934</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">84</td>
+					<td id="num_direct">48</td>
+				</tr>
+				<tr>
+					<td id="name">                  Borrelia sp. RT5S</td>
+					<td id="taxid">2898581</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">34</td>
+					<td id="num_direct">34</td>
+				</tr>
+				<tr>
+					<td id="name">                  Borrelia sp. HM</td>
+					<td id="taxid">1882662</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Borrelia sp. A-FGy1</td>
+					<td id="taxid">2608247</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Borrelia hermsii</td>
+					<td id="taxid">140</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">43</td>
+					<td id="num_direct">43</td>
+				</tr>
+				<tr>
+					<td id="name">                Borrelia coriaceae</td>
+					<td id="taxid">144</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Borrelia coriaceae ATCC 43381</td>
+					<td id="taxid">1408429</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Borrelia persica</td>
+					<td id="taxid">44448</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Borrelia persica No12</td>
+					<td id="taxid">1417230</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">            Sphaerochaetaceae</td>
+					<td id="taxid">2791015</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">47</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Sphaerochaeta</td>
+					<td id="taxid">399320</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">47</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Sphaerochaeta</td>
+					<td id="taxid">2637943</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">44</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Sphaerochaeta sp. S2</td>
+					<td id="taxid">2798868</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">44</td>
+					<td id="num_direct">44</td>
+				</tr>
+				<tr>
+					<td id="name">                Sphaerochaeta globosa</td>
+					<td id="taxid">1131703</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Sphaerochaeta globosa str. Buddy</td>
+					<td id="taxid">158189</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Sphaerochaeta pleomorpha</td>
+					<td id="taxid">1131707</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">          Brachyspirales</td>
+					<td id="taxid">1643686</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.31</td>
+					<td id="num_cover">3469</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Brachyspiraceae</td>
+					<td id="taxid">143786</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.31</td>
+					<td id="num_cover">3469</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Brachyspira</td>
+					<td id="taxid">29521</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.31</td>
+					<td id="num_cover">3469</td>
+					<td id="num_direct">126</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira hampsonii</td>
+					<td id="taxid">1287055</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.16</td>
+					<td id="num_cover">1717</td>
+					<td id="num_direct">1715</td>
+				</tr>
+				<tr>
+					<td id="name">                  Brachyspira hampsonii bv. II</td>
+					<td id="taxid">1203226</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira intermedia</td>
+					<td id="taxid">84377</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.05</td>
+					<td id="num_cover">575</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Brachyspira intermedia PWS/A</td>
+					<td id="taxid">1045858</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.05</td>
+					<td id="num_cover">575</td>
+					<td id="num_direct">575</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Brachyspira</td>
+					<td id="taxid">2649512</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">235</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Brachyspira sp. SAP_772</td>
+					<td id="taxid">2608385</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">234</td>
+					<td id="num_direct">234</td>
+				</tr>
+				<tr>
+					<td id="name">                  Brachyspira sp. G79</td>
+					<td id="taxid">1358104</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira pilosicoli</td>
+					<td id="taxid">52584</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">226</td>
+					<td id="num_direct">222</td>
+				</tr>
+				<tr>
+					<td id="name">                  Brachyspira pilosicoli SP16</td>
+					<td id="taxid">1042418</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                  Brachyspira pilosicoli 95/1000</td>
+					<td id="taxid">759914</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira hyodysenteriae</td>
+					<td id="taxid">159</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">205</td>
+					<td id="num_direct">205</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira aalborgi</td>
+					<td id="taxid">29522</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">193</td>
+					<td id="num_direct">193</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira suanatina</td>
+					<td id="taxid">381802</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">127</td>
+					<td id="num_direct">127</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira murdochii</td>
+					<td id="taxid">84378</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">36</td>
+					<td id="num_direct">36</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira innocens</td>
+					<td id="taxid">13264</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">17</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Brachyspira innocens ATCC 29796</td>
+					<td id="taxid">1267004</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">17</td>
+					<td id="num_direct">17</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira catarrhinii</td>
+					<td id="taxid">2528966</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">11</td>
+					<td id="num_direct">11</td>
+				</tr>
+				<tr>
+					<td id="name">                Brachyspira alvinipulli</td>
+					<td id="taxid">84379</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Brachyspira alvinipulli ATCC 51933</td>
+					<td id="taxid">1408430</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">          Brevinematales</td>
+					<td id="taxid">1643687</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">175</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Brevinemataceae</td>
+					<td id="taxid">1100104</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">175</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Brevinema</td>
+					<td id="taxid">34096</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">175</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Brevinema andersonii</td>
+					<td id="taxid">34097</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">175</td>
+					<td id="num_direct">175</td>
+				</tr>
+				<tr>
+					<td id="name">      Acidobacteria</td>
+					<td id="taxid">57723</td>
+					<td id="rank">P</td>
+					<td id="percentage">  0.16</td>
+					<td id="num_cover">1827</td>
+					<td id="num_direct">161</td>
+				</tr>
+				<tr>
+					<td id="name">        Holophagae</td>
+					<td id="taxid">533205</td>
+					<td id="rank">C</td>
+					<td id="percentage">  0.08</td>
+					<td id="num_cover">916</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">          Thermotomaculales</td>
+					<td id="taxid">2562243</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">698</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Thermotomaculaceae</td>
+					<td id="taxid">2562244</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">698</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Thermotomaculum</td>
+					<td id="taxid">1172428</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">698</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Thermotomaculum hydrothermale</td>
+					<td id="taxid">981385</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">698</td>
+					<td id="num_direct">698</td>
+				</tr>
+				<tr>
+					<td id="name">          Acanthopleuribacterales</td>
+					<td id="taxid">533206</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">125</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Acanthopleuribacteraceae</td>
+					<td id="taxid">533207</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">125</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Acanthopleuribacter</td>
+					<td id="taxid">442869</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">125</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Acanthopleuribacter pedis</td>
+					<td id="taxid">442870</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">125</td>
+					<td id="num_direct">125</td>
+				</tr>
+				<tr>
+					<td id="name">          Holophagales</td>
+					<td id="taxid">574975</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">91</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Holophagaceae</td>
+					<td id="taxid">574976</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">91</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Geothrix</td>
+					<td id="taxid">44675</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">91</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Geothrix fermentans</td>
+					<td id="taxid">44676</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">91</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Geothrix fermentans DSM 14018</td>
+					<td id="taxid">1121920</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">91</td>
+					<td id="num_direct">91</td>
+				</tr>
+				<tr>
+					<td id="name">        Acidobacteriia</td>
+					<td id="taxid">204432</td>
+					<td id="rank">C</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">669</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">          Acidobacteriales</td>
+					<td id="taxid">204433</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">668</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Acidobacteriaceae</td>
+					<td id="taxid">204434</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.06</td>
+					<td id="num_cover">668</td>
+					<td id="num_direct">67</td>
+				</tr>
+				<tr>
+					<td id="name">              Acidisarcina</td>
+					<td id="taxid">2608728</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">376</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Acidisarcina polymorpha</td>
+					<td id="taxid">2211140</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.03</td>
+					<td id="num_cover">376</td>
+					<td id="num_direct">376</td>
+				</tr>
+				<tr>
+					<td id="name">              Granulicella</td>
+					<td id="taxid">940557</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">174</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Granulicella</td>
+					<td id="taxid">2621151</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">173</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Granulicella sp. L60</td>
+					<td id="taxid">1641866</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">90</td>
+					<td id="num_direct">90</td>
+				</tr>
+				<tr>
+					<td id="name">                  Granulicella sp. S190</td>
+					<td id="taxid">1747226</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">75</td>
+					<td id="num_direct">75</td>
+				</tr>
+				<tr>
+					<td id="name">                  Granulicella sp. L46</td>
+					<td id="taxid">1641865</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">6</td>
+					<td id="num_direct">6</td>
+				</tr>
+				<tr>
+					<td id="name">                  Granulicella sp. dw_53</td>
+					<td id="taxid">2719792</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Granulicella tundricola</td>
+					<td id="taxid">940615</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Granulicella tundricola MP5ACTX9</td>
+					<td id="taxid">1198114</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Terriglobus</td>
+					<td id="taxid">392733</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">32</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Terriglobus saanensis</td>
+					<td id="taxid">870903</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">32</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Terriglobus saanensis SP1PR4</td>
+					<td id="taxid">401053</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">32</td>
+					<td id="num_direct">32</td>
+				</tr>
+				<tr>
+					<td id="name">              Acidipila</td>
+					<td id="taxid">1000999</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">13</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Acidipila rosea</td>
+					<td id="taxid">768535</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">11</td>
+					<td id="num_direct">11</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Acidipila</td>
+					<td id="taxid">2638815</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Acidipila sp. 4G-K13</td>
+					<td id="taxid">2303751</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Acidipila sp. EB88</td>
+					<td id="taxid">2305226</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Candidatus Sulfotelmatobacter</td>
+					<td id="taxid">2136116</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">5</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Candidatus Sulfotelmatobacter</td>
+					<td id="taxid">2635724</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">5</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                  Kocuria sp. cx-455</td>
+					<td id="taxid">2771377</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">4</td>
+					<td id="num_direct">4</td>
+				</tr>
+				<tr>
+					<td id="name">              Edaphobacter</td>
+					<td id="taxid">388463</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Edaphobacter</td>
+					<td id="taxid">2637509</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Edaphobacter sp. 4G125</td>
+					<td id="taxid">2763071</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">        Blastocatellia</td>
+					<td id="taxid">1562566</td>
+					<td id="rank">C</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">80</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">          Chloracidobacterium</td>
+					<td id="taxid">458032</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.01</td>
+					<td id="num_cover">66</td>
+					<td id="num_direct">66</td>
+				</tr>
+				<tr>
+					<td id="name">          Blastocatellales</td>
+					<td id="taxid">1748771</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">14</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Pyrinomonadaceae</td>
+					<td id="taxid">2048906</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">14</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Pyrinomonas</td>
+					<td id="taxid">1562565</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">14</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Pyrinomonas methylaliphatogenes</td>
+					<td id="taxid">454194</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">14</td>
+					<td id="num_direct">14</td>
+				</tr>
+				<tr>
+					<td id="name">        Vicinamibacteria</td>
+					<td id="taxid">1813735</td>
+					<td id="rank">C</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">          Vicinamibacterales</td>
+					<td id="taxid">2910145</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Vicinamibacteraceae</td>
+					<td id="taxid">2211325</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Luteitalea</td>
+					<td id="taxid">2004797</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Luteitalea pratensis</td>
+					<td id="taxid">1855912</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">      Nitrospirae</td>
+					<td id="taxid">40117</td>
+					<td id="rank">P</td>
+					<td id="percentage">  0.11</td>
+					<td id="num_cover">1168</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">        Thermodesulfovibrionia</td>
+					<td id="taxid">2811502</td>
+					<td id="rank">C</td>
+					<td id="percentage">  0.09</td>
+					<td id="num_cover">949</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">          Thermodesulfovibrionales</td>
+					<td id="taxid">2811503</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.09</td>
+					<td id="num_cover">949</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Thermodesulfovibrionaceae</td>
+					<td id="taxid">2811504</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.07</td>
+					<td id="num_cover">761</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Thermodesulfovibrio</td>
+					<td id="taxid">28261</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.07</td>
+					<td id="num_cover">761</td>
+					<td id="num_direct">303</td>
+				</tr>
+				<tr>
+					<td id="name">                unclassified Thermodesulfovibrio</td>
+					<td id="taxid">2645936</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">453</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Thermodesulfovibrio sp. N1</td>
+					<td id="taxid">1871110</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.04</td>
+					<td id="num_cover">453</td>
+					<td id="num_direct">453</td>
+				</tr>
+				<tr>
+					<td id="name">                Thermodesulfovibrio aggregans</td>
+					<td id="taxid">86166</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">3</td>
+					<td id="num_direct">3</td>
+				</tr>
+				<tr>
+					<td id="name">                Thermodesulfovibrio thiophilus</td>
+					<td id="taxid">340095</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Thermodesulfovibrio thiophilus DSM 17215</td>
+					<td id="taxid">1123376</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">2</td>
+					<td id="num_direct">2</td>
+				</tr>
+				<tr>
+					<td id="name">            Dissulfurispiraceae</td>
+					<td id="taxid">2811505</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">188</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">              Dissulfurispira</td>
+					<td id="taxid">2811506</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">188</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Dissulfurispira thermophila</td>
+					<td id="taxid">2715679</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">188</td>
+					<td id="num_direct">188</td>
+				</tr>
+				<tr>
+					<td id="name">        Nitrospira</td>
+					<td id="taxid">203693</td>
+					<td id="rank">C</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">218</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">          Nitrospirales</td>
+					<td id="taxid">189778</td>
+					<td id="rank">O</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">218</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">            Nitrospiraceae</td>
+					<td id="taxid">189779</td>
+					<td id="rank">F</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">218</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Nitrospira</td>
+					<td id="taxid">1234</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">211</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">                Nitrospira cf. moscoviensis SBR1015</td>
+					<td id="taxid">96242</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.02</td>
+					<td id="num_cover">203</td>
+					<td id="num_direct">203</td>
+				</tr>
+				<tr>
+					<td id="name">                Nitrospira japonica</td>
+					<td id="taxid">1325564</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">7</td>
+					<td id="num_direct">7</td>
+				</tr>
+				<tr>
+					<td id="name">              Leptospirillum</td>
+					<td id="taxid">179</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">4</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Leptospirillum sp. Group I</td>
+					<td id="taxid">655606</td>
+					<td id="rank">G1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">4</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                  Leptospirillum ferrooxidans</td>
+					<td id="taxid">180</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">4</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                    Leptospirillum ferrooxidans C2-3</td>
+					<td id="taxid">1162668</td>
+					<td id="rank">S1</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">4</td>
+					<td id="num_direct">4</td>
+				</tr>
+				<tr>
+					<td id="name">              Candidatus Magnetobacterium</td>
+					<td id="taxid">40118</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Candidatus Magnetobacterium casensis</td>
+					<td id="taxid">1455061</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+				<tr>
+					<td id="name">              Candidatus Magnetominusculus</td>
+					<td id="taxid">2914032</td>
+					<td id="rank">G</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">0</td>
+				</tr>
+				<tr>
+					<td id="name">                Candidatus Magnetominusculus xianensis</td>
+					<td id="taxid">1748249</td>
+					<td id="rank">S</td>
+					<td id="percentage">  0.00</td>
+					<td id="num_cover">1</td>
+					<td id="num_direct">1</td>
+				</tr>
+			</tbody>
+		</table>
+		<script src="reportScript.js"></script>
+	</body>
+</html>
