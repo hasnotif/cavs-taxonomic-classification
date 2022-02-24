@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# filter_ncbi_taxonomy.py v0.4.2 - to be executed in same directory as taxdump.tar and input .txt file
+# filter_ncbi_taxonomy.py v0.5 - to be executed in same directory as taxdump.tar and input .txt file
 # Parses the NCBI taxonomy as a tree, then filters out all descendant nodes of user-defined taxonomic groups
 # Original credits to romainstuder @ https://github.com/romainstuder/evosite3d for the tree parsing
 
@@ -9,27 +9,35 @@ from typing import Dict, List, Tuple
 
 def main():
     cwd = os.getcwd() # must be in $DB_NAME/
+    tax_dir = os.path.join(cwd, "taxonomy")
 
     parser = argparse.ArgumentParser(description = "Filter NCBI taxonomy")
-    parser.add_argument('i', help = "specify input file in .txt format - taxon names must be newline-separated")
-    parser.add_argument('-o', '--output_directory', help = "specify output directory of filtered nodes.dmp", default = os.path.join(cwd, "taxonomy"))
+    parser.add_argument('-i', '--input', help = "specify input file in .txt format - taxon names must be newline-separated", required = True)
+    parser.add_argument('-o', '--output_directory', help = "specify output directory of filtered nodes.dmp", default = tax_dir)
     args = parser.parse_args()
 
     # open input .txt file -> [taxon names]
-    with open(args.i, 'r') as r:
+    with open(args.input, 'r') as r:
         hi_taxnames = r.readlines()
     hi_taxnames2 = []
     for taxname in hi_taxnames:
         hi_taxnames2.append(taxname.strip("\n"))
 
+    # download NCBI taxonomy in 'taxonomy' subdirectory if not found
+    print("Downloading latest NCBI taxdump files...")
+    if not os.path.exists(tax_dir):
+        os.mkdir(tax_dir)
+    os.chdir(tax_dir)
+    os.system("wget ftp://ftp.ncbi.nlm.nih.gov/pub/taxonomy/taxdump.tar.gz")
+    os.system("tar -xzvf taxdump.tar.gz")
+
     # parse NCBI taxonomy
-    print("Parsing NCBI taxonomy")
-    os.chdir(os.path.join(cwd, "taxonomy"))
+    print("Parsing NCBI taxonomy...")
     name_dict, name_dict_reverse, names_dmp_dict = load_ncbi_names(filename="names.dmp")
     ncbi_taxonomy, nodes_dmp_dict = load_ncbi_taxonomy(filename="nodes.dmp", name_dict=name_dict)
     
     # fetch descendant nodes of input taxons
-    print("Fetching all descendant nodes of your input taxons")
+    print("Fetching all descendant nodes of your input taxonomic groups...")
     all_descendants = []
     for taxname in hi_taxnames2:
         if isinstance(name_dict_reverse[taxname], list): # input name in hi_taxnames2 found to be a duplicate in taxonomy
