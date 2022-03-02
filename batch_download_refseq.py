@@ -23,7 +23,7 @@ def main():
     
     query_taxid = args.i
     query_name = args.n
-    query = f"txid{query_taxid}[Organism]+AND+RefSeq[filter]"
+    query = f"txid{query_taxid}[Organism]+AND+RefSeq[filter]+AND+complete genome[TI]"
     ext = f"esearch.fcgi?db={db}&term={query}&usehistory=y"
     if args.api_key != None:
         ext += f"&api_key={args.api_key}"
