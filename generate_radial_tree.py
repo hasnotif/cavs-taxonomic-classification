@@ -15,7 +15,8 @@ def main():
         os.chdir(res_dir)
 
     colours = ["IndianRed", "Pink", "LightSalmon", "Gold", "Thistle", "GreenYellow", "Aqua", "Bisque", "Gainsboro",
-                "HotPink", "OrangeRed", "Yellow", "Violet", "LimeGreen", "LightCyan", "BurlyWood", "Gray"]
+                "HotPink", "OrangeRed", "Yellow", "Violet", "LimeGreen", "LightCyan", "BurlyWood", "Gray", "Red", "MediumVioletRed", "DarkOrange",
+                "Khaki", "DarkViolet", "SeaGreen", "Turquoise", "RosyBrown", "SlateGray"]
 
     parser = argparse.ArgumentParser(description = "Reads in Kraken2 classification output and produces a radial tree of the identified taxonomic groups")
     parser.add_argument("i", help = "specify Kraken2 classification output file")
