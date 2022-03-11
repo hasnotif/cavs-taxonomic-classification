@@ -39,12 +39,9 @@ def main():
     if args.update_taxonomy:
         ncbi.update_taxonomy_database()
     tree = ncbi.get_topology(classified_taxids)
-    classified_taxids2name = ncbi.get_taxid_translator(classified_taxids)
-    classified_taxids2rank = ncbi.get_rank(classified_taxids)
-    for leaf in tree.traverse():
-        if leaf.name in classified_taxids2name:
-            leaf.add_feature(sci_name = classified_taxids2name[leaf.name])
-            leaf.add_feature(rank = classified_taxids2rank[leaf.name])
+
+    # Export Newick tree
+    tree.write(format = 1, outfile = "tree.txt")
 
     # Tree style
     ts = TreeStyle()
@@ -68,13 +65,13 @@ def main():
         ts.legend.add_face(TextFace(f" {node.sci_name}", fsize = 100), column = 1)
         idx += 1
 
-    tree.render("tree.svg", w = 180, units = "mm", tree_style = ts)
+    tree.render("tree.svg", tree_style = ts)
  
 def layout(node):
     style2 = NodeStyle()
     style2["fgcolor"] = "darkred"
     style2["shape"] = "sphere"
-    style2["size"] = 50
+    style2["size"] = 10
 
     if node.is_leaf():
         node.set_style(style2)
