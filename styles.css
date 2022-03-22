@@ -1,12 +1,57 @@
 body {
-    background-color: lightcyan;
+    background-color: white;
+}
+
+div.header {
+    background-color: #006225;
+    border: 0;
+    margin: 0;
+    padding: 0.5em;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+div.main {
+    display: block;
+    position: absolute;
+    overflow: auto;
+    height: auto;
+    width: auto;
+    top: 4.5em;
+    right: 0;
+    padding: 0 0 0 0.8em;
+    background-color: white;
+}
+
+#title {
+    color: white;
+    font-family: sans-serif;
+    font-size: 175%;
+    font-weight: bold;
+    text-align: left;
+    vertical-align: 45%;
+    padding: 0.1em;
+}
+
+#header_details {
+    color: white;
+    font-family: sans-serif;
+    font-size: 125%;
+    font-weight: bold;
+    text-align: right;
+    padding-top: 6px;
+    float: right;
+    clear: right;
+    margin-right: 1.0em;
 }
 
 h1 {
-    color: black;
+    color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: 200%;
-    text-align: center;
+    font-size: 150%;
+    text-align: left;
     padding: 10px;
 }
 
