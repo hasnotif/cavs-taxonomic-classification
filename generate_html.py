@@ -46,7 +46,7 @@ def main():
     os.system(cmd)
 
     # generate HTML file
-    page = HTMLGenerator(args.output_filename, total, rate, args.tree_name, args.query_name)
+    page = HTMLGenerator(args.report_output, args.output_filename, total, rate, args.tree_name, args.query_name)
     page.add_taxa_results(results)
     page.write(res_dir)
     print("HTML file successfully generated")
@@ -81,7 +81,8 @@ def get_taxa_results(file):
     return results
 
 class HTMLGenerator(object):
-    def __init__(self, filename, total_seq, cl_rate, tree_img, query_name):
+    def __init__(self, report_file, filename, total_seq, cl_rate, tree_img, query_name):
+        self.report_file = report_file
         self.filename = filename
         self.total_seq = total_seq
         self.cl_rate = cl_rate
@@ -125,8 +126,44 @@ class HTMLGenerator(object):
             w.write("\t\t\t</div>\n")
             w.write("\t\t</div>\n")
             w.write("\t\t<div class=\"main\">\n")
-            w.write("\t\t\t<h2>Summary of results</h2>\n")
-            w.write(f"\t\t\t<p>Out of {self.total_seq} sequences, {self.cl_rate} are assigned with a taxonomic classification.</p>\n")
+
+            # main stats table
+            w.write("\t\t\t<h2>Main Statistics</h2>\n")
+            w.write("\t\t\t<table id=\"mainStatsTable\">\n")
+            w.write("\t\t\t\t<thead>\n")
+            w.write("\t\t\t\t\t<tr>\n")
+            w.write("\t\t\t\t\t\t<th>Field</th>\n")
+            w.write("\t\t\t\t\t\t<th>Value</th>\n")
+            w.write("\t\t\t\t\t</tr>\n")
+            w.write("\t\t\t\t</thead>\n")
+            w.write("\t\t\t\t<tbody>\n")
+            w.write("\t\t\t\t\t<tr>\n")
+            w.write("\t\t\t\t\t\t<td>Raw report filename</td>\n")
+            w.write(f"\t\t\t\t\t\t<td><a href=\"{self.report_file}\">{self.report_file}</a></td>\n")
+            w.write("\t\t\t\t\t</tr>\n")
+            w.write("\t\t\t\t\t<tr>\n")
+            w.write("\t\t\t\t\t\t<td>Raw report filetype</td>\n")
+            if "bracken" in self.report_file:
+                w.write("\t\t\t\t\t\t<td>Bracken report</td>\n")
+            else:
+                w.write("\t\t\t\t\t\t<td>Kraken2 report</td>\n")
+            w.write("\t\t\t\t\t<tr>\n")
+            w.write("\t\t\t\t\t\t<td>Classification rate</td>\n")
+            w.write(f"\t\t\t\t\t\t<td>{self.cl_rate}</td>\n")
+            w.write("\t\t\t\t\t</tr>\n")
+            w.write("\t\t\t\t\t<tr>\n")
+            w.write("\t\t\t\t\t\t<td>Total number of reads in sample</td>\n")
+            w.write(f"\t\t\t\t\t\t<td>{self.total_seq}</td>\n")
+            w.write("\t\t\t\t\t</tr>\n")
+            w.write("\t\t\t\t\t<tr>\n")
+            w.write("\t\t\t\t\t\t<td>Kraken2 confidence threshold</td>\n")
+            w.write(f"\t\t\t\t\t\t<td>0.05</td>\n")
+            w.write("\t\t\t\t\t</tr>\n")
+            w.write("\t\t\t\t\t<tr>\n")
+            w.write("\t\t\t\t\t\t<td>Bracken threshold</td>\n")
+            w.write(f"\t\t\t\t\t\t<td>10</td>\n")
+            w.write("\t\t\t\t\t</tr>\n")
+            w.write("\t\t\t\t</tbody>\n")
 
             # embed radial tree image
             w.write("\t\t\t<h3>Radial tree of Kraken2-classified taxonomic groups</h3>\n")
