@@ -30,26 +30,33 @@ def main():
     shutil.copy("cavs-taxonomic-classification/reportScript.js", res_dir)
     shutil.copy("cavs-taxonomic-classification/cavs_logo.jpg", res_dir)
 
+    done_msg = "DONE"
+
     # calculate classification rate from Kraken2 standard output
-    print("Calculating classification rate...")
+    print("Calculating classification rate...", end = " ")
     rate, total = get_classification_rate(args.standard_output)
+    print(done_msg)
 
     # print taxa results from Kraken2 report - ignore unclassified and groups with 0 seq directly assigned (TBC)
-    print("Obtaining taxa results...")
+    print("Obtaining taxa results...", end = " ")
     results = get_taxa_results(args.report_output)
+    print(done_msg)
 
     # generate radial tree image, default = tree.svg
-    print("Generating radial taxonomy tree...")
+    print("Generating radial taxonomy tree...", end = " ")
     cmd = f"~/cavs-taxonomic-classification/generate_radial_tree.py {args.report_output} -o {args.tree_name}"
     if args.update_taxonomy:
         cmd += f" --update_taxonomy"
     os.system(cmd)
+    print(done_msg)
 
     # generate HTML file
+    print("Generating HTML report...", end = " ")
     page = HTMLGenerator(args.report_output, args.output_filename, total, rate, args.tree_name, args.query_name)
     page.add_taxa_results(results)
     page.write(res_dir)
-    print("HTML file successfully generated")
+    print(done_msg)
+    print(f"The HTML report has been successfully generated in the following directory: {res_dir}")
 
 def get_classification_rate(file):
     with open(file, "r") as r:
