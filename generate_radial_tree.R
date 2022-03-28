@@ -9,6 +9,7 @@ library(ggtree)
 library(ggtreeExtra)
 library(treeio)
 library(plotly)
+library(svglite)
 
 Sys.setenv(QT_QPA_PLATFORM = "offscreen")
 args <- commandArgs(trailingOnly = TRUE) # requires ETE3-generated newick tree + Kraken2/Bracken report
@@ -46,4 +47,4 @@ p <- ggtree(tree, layout = "circular", branch.length = "none") +
       legend.text = element_text(size = 8),
       plot.title = element_text(face = "bold", size = 12))
 
-ggsave("radial_tree.pdf")
+ggsave("radial_tree.svg")
