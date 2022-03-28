@@ -17,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description = "Creates a HTML report of Kraken2/Bracken classification results")
     parser.add_argument("-r", "--report_output", help = "specify Kraken2/Bracken report output file")
     parser.add_argument("-s", "--standard_output", help = "specify Kraken2 standard output file")
-    parser.add_argument("-t", "--tree_name", help = "specify filename of radial tree image", default = "tree.svg")
+    parser.add_argument("-t", "--tree_name", help = "specify filename of radial tree image", default = "radial_tree.svg")
     parser.add_argument("-f", "--output_filename", help = "specify filename of HTML report", default = "results.html")
     parser.add_argument("-q", "--query_name", help = "specify a recognisable query name based on your experiment (eg. Pangolin-herpes-tumor-DNA)", default = "Kraken2 query")
     parser.add_argument("-u", "--update_taxonomy", help = "update NCBI taxonomy files", action = "store_true")
@@ -125,7 +125,7 @@ class HTMLGenerator(object):
             t = now.strftime("%X")
             w.write(f"\t\t\t\t{day} {mth} {year}, {t}\n")
             w.write("\t\t\t\t<br>\n")
-            w.write(f"\t\t\t\t{self.query_name}\n")
+            w.write(f"\t\t\t\t<a href=\"../html_results\" id=\"folder_link\">{self.query_name}</a>\n")
             w.write("\t\t\t</div>\n")
             w.write("\t\t\t<div id=\"header_title\">\n")
             w.write("\t\t\t\t<img id=\"cavslogo\" src=\"cavs_logo.jpg\" alt=\"cavs_logo\" height=\"55\" width=\"55\">\n")
@@ -171,9 +171,10 @@ class HTMLGenerator(object):
             w.write(f"\t\t\t\t\t\t<td>10</td>\n")
             w.write("\t\t\t\t\t</tr>\n")
             w.write("\t\t\t\t</tbody>\n")
+            w.write("\t\t\t</table>\n")
 
             # embed radial tree image
-            w.write("\t\t\t<h3>Radial tree of Kraken2-classified taxonomic groups</h3>\n")
+            w.write("\t\t\t<h2>Taxonomy tree of Kraken2-classified groups (after Bracken estimation)</h2>\n")
             w.write(f"\t\t\t<img id=\"radialTree\" src=\"{self.tree_img}\" alt=\"radial tree image\" width=\"750\" height=\"750\">\n")
             
             # draw table of taxa results
