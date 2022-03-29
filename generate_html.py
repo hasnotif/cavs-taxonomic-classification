@@ -135,7 +135,7 @@ class HTMLGenerator(object):
             w.write("\t\t<div class=\"main\">\n")
 
             # main stats table
-            w.write("\t\t\t<h2>Main Statistics</h2>\n")
+            w.write("\t\t\t<h2>Main statistics</h2>\n")
             w.write("\t\t\t<table id=\"mainStatsTable\">\n")
             w.write("\t\t\t\t<thead>\n")
             w.write("\t\t\t\t\t<tr>\n")
@@ -175,10 +175,11 @@ class HTMLGenerator(object):
 
             # embed radial tree image
             w.write("\t\t\t<h2>Taxonomy tree of Kraken2-classified groups (after Bracken estimation)</h2>\n")
-            w.write(f"\t\t\t<img id=\"radialTree\" src=\"{self.tree_img}\" alt=\"radial tree image\" width=\"750\" height=\"750\">\n")
+            w.write("\t\t\t<p>Note: The black bars represent Bracken-estimated species-level read counts.</p>\n")
+            w.write(f"\t\t\t<img id=\"radialTree\" src=\"{self.tree_img}\" alt=\"radial tree image\">\n")
             
             # draw table of taxa results
-            w.write(f"\t\t\t<h2>Table of classified taxonomic groups</h2>\n")
+            w.write(f"\t\t\t<h2>Detailed statistics for classified taxonomic groups (after Bracken estimation)</h2>\n")
             # header row
             w.write("\t\t\t<table id=\"taxonomyTable\" class=\"tablesorter\">\n")
             w.write("\t\t\t\t<thead>\n")
@@ -202,9 +203,9 @@ class HTMLGenerator(object):
             w.write("\t\t\t\t\t\t\t</select>\n")
             w.write("\t\t\t\t\t\t</th>\n")
 
-            w.write("\t\t\t\t\t\t<th id=\"3\" class=\"rankable\">Percentage of fragments covered (%)</th>\n")
-            w.write("\t\t\t\t\t\t<th id=\"4\" class=\"rankable\">Number of fragments covered</th>\n")
-            w.write("\t\t\t\t\t\t<th id=\"5\" class=\"rankable\">Number of fragments directly assigned</th>\n")
+            w.write("\t\t\t\t\t\t<th id=\"3\" class=\"rankable\">Percentage of reads covered (%)</th>\n")
+            w.write("\t\t\t\t\t\t<th id=\"4\" class=\"rankable\">Number of reads covered</th>\n")
+            w.write("\t\t\t\t\t\t<th id=\"5\" class=\"rankable\">Number of reads directly assigned</th>\n")
             w.write("\t\t\t\t\t</tr>\n")
             w.write("\t\t\t\t</thead>\n")
 
