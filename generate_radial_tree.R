@@ -44,7 +44,6 @@ p <- ggtree(tree, layout = "circular", branch.length = "none") +
      theme(
       legend.position = "right",
       legend.title = element_text(face = "bold", size = 10),
-      legend.text = element_text(size = 8),
-      plot.title = element_text(face = "bold", size = 12))
+      legend.text = element_text(size = 8))
 
 ggsave(args[3])
