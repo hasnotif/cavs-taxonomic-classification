@@ -53,7 +53,7 @@ div.main {
 }
 
 #folder_link:visited {
-    color: rgb(219, 215, 215);
+    color: white;
     background-color: transparent;
     text-decoration: underline;
 }
@@ -111,8 +111,9 @@ h3 {
 
 p {
     color: black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     font-size: 100%;
+    text-align: center;
 }
 
 #radialTree {
@@ -130,9 +131,9 @@ p {
 }
 
 #taxonomyTable th {
-    background-color: lightsteelblue;
+    background-color: #0fc655;
     border: 1px solid black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     padding: 10px;
 }
 
@@ -142,19 +143,23 @@ p {
 
 #taxonomyTable td {
     border: 1px solid black;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     padding: 5px;
     text-align: center;
 }
 
 #rankList {
-    background-color: lightsteelblue;
-    border: none;
+    background-color: #0fc655a5;
+    border: black;
     cursor: pointer;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: sans-serif;
     font-size: 100%;
     font-weight: bold;
     padding: 0px;
+}
+
+#rankList:hover {
+    background-color: #0cbc4f;
 }
 
 button {
