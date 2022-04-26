@@ -1,3 +1,11 @@
+## -------------------------------------------------------------------------------------
+## Created By: Irsyaad Hasif (hasifirsyaad@gmail.com)
+## Created On: 26 Apr 2022 
+## Version: 1.0
+## -------------------------------------------------------------------------------------
+## This script visualises the input Newick tree as a radial taxonomy tree in svg format.
+## -------------------------------------------------------------------------------------
+
 library(rio)
 library(janitor)
 library(lubridate)
@@ -26,6 +34,7 @@ report <- import(args[2])
 colnames(report) <- c("percentage_cover", "num_cover", "num_direct", "rank_code", "ncbi_taxid", "sci_name")
 report <- select(report, ncbi_taxid, sci_name, rank_code, num_direct)
 
+# Filtering phyla data
 tibble <- as_tibble(tree)
 tibble_phyla <- filter(tibble, tibble$rank == "phylum")
 colnames(tibble_phyla)[7] <- "Phyla"
