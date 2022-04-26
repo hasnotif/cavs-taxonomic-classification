@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+#------------------------------------------------------------------
+# Created By: Irsyaad Hasif (hasifirsyaad@gmail.com)
+# Created On: 26 Apr 2022 
+# Version: 1.0
+#------------------------------------------------------------------
+# This script prunes the NCBI taxonomy to obtain a Newick tree
+# containing only the Kraken2-classified taxonomic groups. It 
+# then passes the tree to generate_radial_tree.R for visualisation.
+#------------------------------------------------------------------
 
 import os
 import argparse
@@ -14,7 +23,7 @@ def main():
         os.chdir(res_dir)
 
     parser = argparse.ArgumentParser(description = "Reads in Kraken2/Bracken report output and produces a radial tree of the identified taxonomic groups")
-    parser.add_argument("i", help = "specify Kraken2/Bracken report output")
+    parser.add_argument("-i", required = True, help = "specify Kraken2/Bracken report output")
     parser.add_argument("-o", "--output_tree", help = "specify filename of output tree image (default filetype = .svg)", default = "radial_tree.svg")
     parser.add_argument("-u", "--update_taxonomy", help = "update NCBI taxonomy files", action = "store_true")
     args = parser.parse_args()
@@ -45,4 +54,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-
