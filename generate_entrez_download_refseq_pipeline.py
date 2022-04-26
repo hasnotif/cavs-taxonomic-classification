@@ -1,41 +1,51 @@
 #!/usr/bin/env python3
-# generate_batch_download_pipeline.py v0.3.1
-# Generates a makefile which batch downloads specific RefSeq sequences based on user-defined set of taxonomic groups
-# Retmax = 500 by default
+#--------------------------------------------------------------
+# Created By: Irsyaad Hasif (hasifirsyaad@gmail.com)
+# Created On: 26 Apr 2022 
+# Version: 1.0
+#--------------------------------------------------------------
+# This script generates a Makefile which batch downloads RefSeq 
+# complete genomes under a user-defined set of taxonomic groups.
+#--------------------------------------------------------------
 
 import os
 import argparse
 
 def main():
-    cwd = os.getcwd() # must be in $DB_NAME/
+    cwd = os.getcwd() 
     db_path = cwd
     tax_path = os.path.join(db_path, "taxonomy")
-    default_seq_path = os.path.join(cwd, "sequences")
+    default_seq_path = os.path.join(db_path, "sequences")
+    done_msg = "DONE"
 
-    parser = argparse.ArgumentParser(description = "Download specific RefSeq sequences based on a user-defined set of taxonomic groups")
-    parser.add_argument('i', help = "specify input file in .txt format - taxon names must be newline-separated")
+    parser = argparse.ArgumentParser(description = "Download RefSeq sequences under a user-defined set of taxonomic groups")
+    parser.add_argument('-i', required = True, help = "specify input file in .txt format - taxon names must be newline-separated")
     parser.add_argument('-m', '--makefile_name', help = "specify filename of makefile with .mk extension", default = "batch_download_refseq.mk")
-    parser.add_argument("-k", "--api_key", help = "specify NCBI API key (optional)", default = None)
+    parser.add_argument("-k", "--api_key", help = "specify NCBI API key", default = None)
     args = parser.parse_args()
 
     if not os.path.exists(default_seq_path):
         os.mkdir(default_seq_path)
         print(f"Created {default_seq_path} directory - sequence files will be downloaded and saved here")
 
-    print("Processing your taxonomic groups")
+    print("Processing your taxonomic groups...", end = " ")
     with open(args.i, 'r') as r:
         query_taxnames = r.readlines()
     query_taxnames2 = []
     for taxname in query_taxnames:
         query_taxnames2.append(taxname.strip("\n"))
+    print(done_msg)
 
-    print("Parsing names.dmp")
-    # changing to $DB_NAME/taxonomy directory
+    print("Parsing names.dmp...", end = " ")
     os.chdir(tax_path)
-    name_dict = load_ncbi_names("names.dmp") # key = name, value = taxid or [taxids]
-    query_list = [] # contains (taxid, name) tuples
+    name_dict = load_ncbi_names("names.dmp") 
+    query_list = []
+    print(done_msg)
 
+    print("Mapping taxonomic names to IDs...", end = " ")
     for name in query_taxnames2:
+        if name == "":
+            continue
         if isinstance(name_dict[name], list):
             taxid_list = name_dict[name]
             print(f"Multiple taxIDs found for {name}: {taxid_list}")
@@ -48,24 +58,23 @@ def main():
         else:
             pair = (name_dict[name], name)
             query_list.append(pair)
+    print(done_msg)
 
+    print("Writing Makefile...", end = " ")
     mg = MakefileGenerator(args.makefile_name)
 
-    # pass query names and taxids (+ API key if available) as separate inputs to batch_download_refseq.py via makefile 
-    print("Generating targets and dependencies for makefile")
     for query in query_list:
         tgt = f'{default_seq_path}/{query[1]}_{query[0]}.fa.OK'
         dep = ''
-        cmd = f'~/cavs-taxonomic-classification/batch_download_refseq.py {query[0]} {query[1]} -o {default_seq_path}'
+        cmd = f'~/cavs-taxonomic-classification/batch_download_refseq.py -i {query[0]} -n {query[1]} -o {default_seq_path}'
         if args.api_key != None:
             cmd += f" -k {args.api_key}"
         mg.add(tgt, dep, cmd)
 
-    print("Writing makefile")
-    # change back to $DB_NAME/
     os.chdir(db_path)
     mg.write()
-    print(f"Successfully generated makefile ({args.makefile_name})")
+    print(done_msg)
+    print(f"Successfully generated Makefile ({args.makefile_name})")
 
 def load_ncbi_names(filename):
     name_dict = {}  # key = name, value = taxid or [taxids]
