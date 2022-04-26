@@ -1,4 +1,12 @@
 #!/usr/bin/env python3
+#-------------------------------------------------------------
+# Created By: Irsyaad Hasif (hasifirsyaad@gmail.com)
+# Created On: 26 Apr 2022 
+# Version: 1.0
+#-------------------------------------------------------------
+# This script generates a HTML report that summarises Kraken2/
+# Bracken classification and abundance estimation results.
+#-------------------------------------------------------------
 
 import os
 import argparse
@@ -6,9 +14,9 @@ import datetime
 import shutil
 
 def main():
-    cwd = os.getcwd() # assume home directory
+    cwd = os.getcwd()
 
-    # create 'html_results' html directory
+    # create 'html_results' HTML directory
     res_dir = os.path.join(cwd, "html_results")
     if not os.path.exists(res_dir):
         print("Creating HTML directory...")
@@ -19,11 +27,11 @@ def main():
     parser.add_argument("-s", "--standard_output", help = "specify Kraken2 standard output file")
     parser.add_argument("-t", "--tree_name", help = "specify filename of radial tree image", default = "radial_tree.svg")
     parser.add_argument("-f", "--output_filename", help = "specify filename of HTML report", default = "results.html")
-    parser.add_argument("-q", "--query_name", help = "specify a recognisable query name based on your experiment (eg. Pangolin-herpes-tumor-DNA)", default = "Kraken2 query")
+    parser.add_argument("-q", "--query_name", help = "specify a recognisable query name based on your experiment (eg. Pangolin-herpes-tumor-DNA)", default = "taxo_query")
     parser.add_argument("-u", "--update_taxonomy", help = "update NCBI taxonomy files", action = "store_true")
     args = parser.parse_args()
 
-    # copy CSS, javascript and Kraken2/Bracken output files to html directory
+    # copy CSS, javascript and Kraken2/Bracken output files to HTML directory
     shutil.copy(args.report_output, res_dir)
     shutil.copy(args.standard_output, res_dir)
     shutil.copy("cavs-taxonomic-classification/styles.css", res_dir)
@@ -37,14 +45,14 @@ def main():
     rate, total = get_classification_rate(args.standard_output)
     print(done_msg)
 
-    # print taxa results from Kraken2 report - ignore unclassified and groups with 0 seq directly assigned (TBC)
+    # print taxa results from Kraken2 report
     print("Obtaining taxa results...", end = " ")
     results = get_taxa_results(args.report_output)
     print(done_msg)
 
-    # generate radial tree image, default = tree.svg
-    print("Generating radial taxonomy tree...", end = " ")
-    cmd = f"~/cavs-taxonomic-classification/generate_radial_tree.py {args.report_output} -o {args.tree_name}"
+    # visualise radial taxonomy tree
+    print("Visualising radial taxonomy tree...", end = " ")
+    cmd = f"~/cavs-taxonomic-classification/generate_radial_tree.py -i {args.report_output} -o {args.tree_name}"
     if args.update_taxonomy:
         cmd += f" --update_taxonomy"
     os.system(cmd)
@@ -174,12 +182,19 @@ class HTMLGenerator(object):
             w.write("\t\t\t</table>\n")
 
             # embed radial tree image
-            w.write("\t\t\t<h2>Taxonomy tree of Kraken2-classified groups (after Bracken estimation)</h2>\n")
-            w.write("\t\t\t<p>Note: The black bars represent Bracken-estimated species-level read counts.</p>\n")
+            if "bracken" in self.report_file:
+                w.write("\t\t\t<h2>Taxonomy tree of Kraken2-classified groups (after Bracken estimation)</h2>\n")
+                w.write("\t\t\t<p>Note: The black bars represent Bracken-estimated species-level read counts.</p>\n")
+            else:
+                w.write("\t\t\t<h2>Taxonomy tree of Kraken2-classified groups</h2>\n")
+                w.write("\t\t\t<p>Note: The black bars represent Kraken read counts for the tree tips.</p>\n")
             w.write(f"\t\t\t<img id=\"radialTree\" src=\"{self.tree_img}\" alt=\"radial tree image\">\n")
             
             # draw table of taxa results
-            w.write(f"\t\t\t<h2>Detailed statistics for classified taxonomic groups (after Bracken estimation)</h2>\n")
+            if "bracken" in self.report_file:
+                w.write(f"\t\t\t<h2>Detailed statistics for Kraken2-classified taxonomic groups (after Bracken estimation)</h2>\n")
+            else:
+                w.write(f"\t\t\t<h2>Detailed statistics for Kraken2-classified taxonomic groups</h2>\n")
             # header row
             w.write("\t\t\t<table id=\"taxonomyTable\" class=\"tablesorter\">\n")
             w.write("\t\t\t\t<thead>\n")
