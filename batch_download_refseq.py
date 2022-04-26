@@ -1,18 +1,23 @@
 #!/usr/bin/env python3
-# batch_download_refseq.py v0.5 - upon failure, downloads will now retry up to a maximum of 3 times 
-# Batch downloads RefSeq sequences classified under a specific taxonomic group
-# Retmax = 500 by default
+#----------------------------------------------------
+# Created By: Irsyaad Hasif (hasifirsyaad@gmail.com)
+# Created On: 26 Apr 2022 
+# Version: 1.0
+#----------------------------------------------------
+# This script batch downloads RefSeq complete genomes 
+# classified under a specific taxonomic group.
+#----------------------------------------------------
 
 import os
 import argparse
 import re
-import requests
 import time
+import requests
 
 def main():
     parser = argparse.ArgumentParser(description="Downloads RefSeq sequences under a user-defined set of taxonomic groups in batches of 500")
-    parser.add_argument("i", help = "specify taxid of taxonomic group")
-    parser.add_argument("n", help = "specify name of taxonomic group")
+    parser.add_argument("-i", required = True, help = "specify taxid of taxonomic group")
+    parser.add_argument("-n", required = True, help = "specify name of taxonomic group")
     parser.add_argument("-o", "--output_directory", help = "specify output directory of downloaded sequence files") # default = $DB_NAME/sequences
     parser.add_argument("-k", "--api_key", help = "specify NCBI API key (optional)", default = None)
     parser.add_argument("-v", "--verbose", help = "toggles verbose mode on", action = "store_true")
@@ -44,7 +49,7 @@ def main():
     key = get_substring(m2, ">", "<")
     count = get_substring(m3, ">", "<")
 
-    print(f"Downloading {count} {query_name} (taxid: {query_taxid}) RefSeq sequences in batches of 500")
+    print(f"Downloading {count} {query_name} (taxid: {query_taxid}) RefSeq sequences in batches of 500...")
     with open(os.path.join(args.output_directory, f"{query_name}_{query_taxid}.fa"), "w") as w:
         retmax = 500
         for i in range(0, int(count), retmax):
