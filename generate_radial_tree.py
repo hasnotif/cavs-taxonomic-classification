@@ -15,6 +15,7 @@ from ete3 import Tree, NCBITaxa
 
 def main():
     cwd = os.getcwd()
+    orig_dir = cwd
     res_dir = os.path.join(cwd, "html_results")
     if not os.path.exists(res_dir):
         os.mkdir(res_dir)
@@ -47,7 +48,8 @@ def main():
     tree.write(features = ["name", "sci_name", "taxid", "rank"], format = 3, outfile = out)
     
     # Call R script with Newick tree file as input
-    cmd = f"Rscript ~/cavs-taxonomic-classification/generate_radial_tree.R {out} {args.i} {args.output_tree}"
+    os.chdir(orig_dir)
+    cmd = f"Rscript ~/cavs-taxonomic-classification/generate_radial_tree.R {os.path.join(res_dir, out)} {args.i} {args.output_tree}"
     os.system(cmd)
     
 if __name__ == "__main__":
