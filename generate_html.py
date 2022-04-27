@@ -34,9 +34,9 @@ def main():
     # copy CSS, javascript and Kraken2/Bracken output files to HTML directory
     shutil.copy(args.report_output, res_dir)
     shutil.copy(args.standard_output, res_dir)
-    shutil.copy("../cavs-taxonomic-classification/styles.css", res_dir)
-    shutil.copy("../cavs-taxonomic-classification/reportScript.js", res_dir)
-    shutil.copy("../cavs-taxonomic-classification/cavs_logo.jpg", res_dir)
+    shutil.copy("cavs-taxonomic-classification/styles.css", res_dir)
+    shutil.copy("cavs-taxonomic-classification/reportScript.js", res_dir)
+    shutil.copy("cavs-taxonomic-classification/cavs_logo.jpg", res_dir)
 
     done_msg = "DONE"
 
