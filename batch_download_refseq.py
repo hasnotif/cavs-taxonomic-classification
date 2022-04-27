@@ -60,8 +60,9 @@ def main():
                 efetch_url += f"&api_key={args.api_key}"
             efetch_out = get_efetch_out(efetch_url, args.verbose)
             if efetch_out is None:
-                print(f"Max download retries reached for {efetch_url} - please retry later")
-                continue
+                print(f"Max download retries reached for {efetch_url}")
+                print(f"Download incomplete for {query_name} (taxid: {query_taxid}) - please retry later")
+                exit()
             w.write(efetch_out.text)
     print(f"Download complete for {query_name} (taxid: {query_taxid})")
 
