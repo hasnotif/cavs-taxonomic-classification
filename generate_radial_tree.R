@@ -6,18 +6,22 @@
 ## This script visualises the input Newick tree as a radial taxonomy tree in svg format.
 ## -------------------------------------------------------------------------------------
 
+# Setting installation folder
+dir.create(Sys.getenv("R_LIBS_USER"), recursive = TRUE)
+.libPaths(Sys.getenv("R_LIBS_USER"))
+
 # Installing required packages
 packages = c("pacman", "BiocManager")
 package.check <- lapply(
   packages,
   FUN = function(x) {
     if (!require(x, character.only = TRUE)) {
-      install.packages(x, dependencies = TRUE, lib = "~/R/library")
+      install.packages(x, dependencies = TRUE, lib = Sys.getenv("R_LIBS_USER"))
     }
   }
 )
-pacman::p_load(c(rio, janitor, lubridate, epikit, skimr, ggplot2, ggtree, ggtreeExtra, plotly, svglite, tibble), lib = "~/R/library")
-BiocManager::install("treeio", force = TRUE, lib = "~/R/library")
+pacman::p_load(rio, janitor, lubridate, epikit, skimr, ggplot2, ggtree, ggtreeExtra, plotly, svglite, tibble)
+BiocManager::install("treeio", force = TRUE)
 
 args <- commandArgs(trailingOnly = TRUE) # requires ETE3-generated newick tree + Kraken2/Bracken report
 
