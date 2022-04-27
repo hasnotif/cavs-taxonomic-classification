@@ -16,11 +16,8 @@ from ete3 import Tree, NCBITaxa
 def main():
     cwd = os.getcwd()
     res_dir = os.path.join(cwd, "html_results")
-    if os.path.exists(res_dir):
-        os.chdir(res_dir)
-    else:
+    if not os.path.exists(res_dir):
         os.mkdir(res_dir)
-        os.chdir(res_dir)
 
     parser = argparse.ArgumentParser(description = "Reads in Kraken2/Bracken report output and produces a radial tree of the identified taxonomic groups")
     parser.add_argument("-i", required = True, help = "specify Kraken2/Bracken report output")
@@ -45,6 +42,7 @@ def main():
     tree = ncbi.get_topology(classified_taxids)
 
     # Export Newick tree for R
+    os.chdir(res_dir)
     out = "radial_tree.txt"
     tree.write(features = ["name", "sci_name", "taxid", "rank"], format = 3, outfile = out)
     
