@@ -6,7 +6,7 @@
 ## This script visualises the input Newick tree as a radial taxonomy tree in svg format.
 ## -------------------------------------------------------------------------------------
 
-# Setting installation folder
+# Setting local installation folder
 dir.create(Sys.getenv("R_LIBS_USER"), recursive = TRUE)
 .libPaths(Sys.getenv("R_LIBS_USER"))
 
