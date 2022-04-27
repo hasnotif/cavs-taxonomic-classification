@@ -16,7 +16,7 @@ package.check <- lapply(
     }
   }
 )
-pacman::p_load(rio, janitor, lubridate, epikit, skimr, ggplot2, ggtree, ggtreeExtra, plotly, svglite, tibble)
+pacman::p_load(c(rio, janitor, lubridate, epikit, skimr, ggplot2, ggtree, ggtreeExtra, plotly, svglite, tibble), lib = "~/R/x86_64-pc-linux-gnu-library/4.1")
 BiocManager::install("treeio", force = TRUE, lib = "~/R/x86_64-pc-linux-gnu-library/4.1")
 
 args <- commandArgs(trailingOnly = TRUE) # requires ETE3-generated newick tree + Kraken2/Bracken report
