@@ -6,17 +6,9 @@
 ## This script visualises the input Newick tree as a radial taxonomy tree in svg format.
 ## -------------------------------------------------------------------------------------
 
-library(rio)
-library(janitor)
-library(lubridate)
-library(epikit)
-library(skimr)
-library(ggplot2)
-library(ggtree)
-library(ggtreeExtra)
-library(treeio)
-library(plotly)
-library(svglite)
+# Installing required packages
+install.packages("pacman")
+pacman::p_load(rio, janitor, lubridate, epikit, skimr, ggplot2, ggtree, ggtreeExtra, treeio, plotly, svglite)
 
 args <- commandArgs(trailingOnly = TRUE) # requires ETE3-generated newick tree + Kraken2/Bracken report
 
