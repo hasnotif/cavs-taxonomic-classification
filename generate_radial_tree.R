@@ -12,12 +12,12 @@ package.check <- lapply(
   packages,
   FUN = function(x) {
     if (!require(x, character.only = TRUE)) {
-      install.packages(x, dependencies = TRUE, lib = "~/R/x86_64-pc-linux-gnu-library/4.1")
+      install.packages(x, dependencies = TRUE, lib = "~/R/library")
     }
   }
 )
-pacman::p_load(c(rio, janitor, lubridate, epikit, skimr, ggplot2, ggtree, ggtreeExtra, plotly, svglite, tibble), lib = "~/R/x86_64-pc-linux-gnu-library/4.1")
-BiocManager::install("treeio", force = TRUE, lib = "~/R/x86_64-pc-linux-gnu-library/4.1")
+pacman::p_load(c(rio, janitor, lubridate, epikit, skimr, ggplot2, ggtree, ggtreeExtra, plotly, svglite, tibble), lib = "~/R/library")
+BiocManager::install("treeio", force = TRUE, lib = "~/R/library")
 
 args <- commandArgs(trailingOnly = TRUE) # requires ETE3-generated newick tree + Kraken2/Bracken report
 
