@@ -10,7 +10,7 @@
 install.packages("pacman")
 install.packages("BiocManager")
 pacman::p_load(rio, janitor, lubridate, epikit, skimr, ggplot2, ggtree, ggtreeExtra, plotly, svglite)
-BiocManager::install("treeio")
+BiocManager::install("treeio", force = TRUE)
 
 args <- commandArgs(trailingOnly = TRUE) # requires ETE3-generated newick tree + Kraken2/Bracken report
 
