@@ -12,7 +12,7 @@ package.check <- lapply(
   packages,
   FUN = function(x) {
     if (!require(x, character.only = TRUE)) {
-      install.packages(x, dependencies = TRUE)
+      install.packages(x, dependencies = TRUE, lib = "~/R/x86_64-pc-linux-gnu-library/4.1")
     }
   }
 )
