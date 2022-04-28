@@ -18,12 +18,12 @@ _Note: The following programs are already installed on Atlantis and Shambhala._
 #### Python
 * [ETE3](http://etetoolkit.org/)
 
-  Please follow the instructions [here] to install this library (TBC).
+  Please follow the instructions [here](http://10.10.1.5/wiki/Taxonomic_Classification_Pipeline#Phase_4:_Generate_HTML_Report) to install this library.
 
 #### R
 * [ggtree](https://bioconductor.org/packages/devel/bioc/vignettes/ggtree/inst/doc/ggtree.html)
 
-  This library and its dependencies have already been installed on Atlantis and Shambhala.
+  This library and its dependencies will be automatically installed upon running the R script for the first time.
 
 ### Other Prerequisites
 
